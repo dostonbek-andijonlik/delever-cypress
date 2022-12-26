@@ -40,8 +40,13 @@ describe('empty spec', () => {
     cy.get('#customer > .css-8pw2m5-control').click()  // Search for by phone number
     cy.wait(3000);
 
+    cy.get('#full-width-tab-6').click() // All orders
+    cy.wait(3000)
+
+    cy.get(':nth-child(1) > :nth-child(1) > .button').click()
+    cy.wait(3000);
     //dynamic dropdown
-    cy.get('#customer').select()
+    // cy.get('#customer').select()
     // cy.get(':nth-child(3) > :nth-child(1) > .button').click()
     // cy.get('.rc-switch').click()
     // cy.get('.select__control').click()
