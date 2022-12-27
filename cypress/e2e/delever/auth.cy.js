@@ -1,18 +1,17 @@
 // /<reference types="cypress" />
-Cypress.on('uncaught:exception', (err, runnable) => {
+Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
-import { loginPage } from "../delever-js/environ";
+import { loginPage } from "../delever-js/login";
 
-describe('empty spec', () => {
-  
+describe("empty spec", () => {
   beforeEach(() => {
-    cy.visit('https://test.admin.delever.uz/#/home/dashboard')
-  })
+    cy.visit("https://test.admin.delever.uz/#/home/dashboard");
+  });
 
-  it('passes', () => {
-    loginPage.typeUsername('oybek3');
-    loginPage.typePassword('oybek1024')
+  it("passes", () => {
+    loginPage.typeUsername("oybek3");
+    loginPage.typePassword("oybek1024");
     //
     // const login1 = new loginPage();
     // login1.getLogin.type('oybek3');
@@ -28,6 +27,5 @@ describe('empty spec', () => {
     // cy.go('back');
     // cy.get('.w-16 > :nth-child(2) > a.flex > .active-sidebar').click()  //Orders
     // cy.go('back');
-    
-  })
-})
+  });
+});

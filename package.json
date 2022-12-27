@@ -2,5 +2,8 @@
   "dependencies": {
     "cypress": "^12.2.0",
     "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "cypress-xpath": "^2.0.1"
   }
 }
