@@ -8,22 +8,9 @@ describe("empty spec", () => {
   });
 
   it("clients", () => {
-    //Type username
-    cy.get("#login").type("oybek3");
+ 
 
-    //Type Password
-    cy.wait(3000);
-    cy.get("#password").type("oybek1024");
-
-    //show password
-    cy.get(".cursor-pointer > .MuiSvgIcon-root > path").click();
-    cy.wait(3000);
-    cy.get(".button").click();
-
-    //Open Client's page
-    cy.get(":nth-child(3) > a.flex > .active-sidebar").click();
-
-    // // Add button
+// // Add button
     // cy.get(".button").click();
 
     // // FirstName
@@ -43,8 +30,5 @@ describe("empty spec", () => {
 
     // // Save Button
     // cy.get(":nth-child(2) > .button").click();
-
-    //Search client
-    cy.get('.focus-within\:ring-2 > .bg-white > .flex').type('FirstName')
-  });
-});
+  })
+})

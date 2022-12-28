@@ -3,15 +3,10 @@ class loginPage {
     usernameInput: () => cy.get("#login"),
     passwordInput: () => cy.get("#password"),
     showPassword: () => cy.get(".cursor-pointer > .MuiSvgIcon-root > path"),
-    submitButton: () => cy.get(".button").click(),
+    submitButton: () => cy.get(".button"),
   };
 
-  // typeUsername(username){
-  //   this.elements.usernameInput().type(username);
-  // }
-  // typePassword(password){
-  //   this.elements.passwordInput().type(password);
-  // }
+
 }
 
 module.exports = new loginPage();

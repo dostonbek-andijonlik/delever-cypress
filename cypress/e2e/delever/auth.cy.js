@@ -2,7 +2,7 @@
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
-import { loginPage } from "../delever-js/login";
+import  loginPage  from "../delever-js/login";
 
 describe("empty spec", () => {
   beforeEach(() => {
@@ -10,9 +10,9 @@ describe("empty spec", () => {
   });
 
   it("passes", () => {
-    loginPage.typeUsername("oybek3");
-    loginPage.typePassword("oybek1024");
-    //
+    loginPage.elements.usernameInput().type('oybek3');
+    loginPage.elements.passwordInput().type('oybek1024 ');
+
     // const login1 = new loginPage();
     // login1.getLogin.type('oybek3');
     // login1.getPassword.type("oybek1024");
