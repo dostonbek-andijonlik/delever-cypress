@@ -1,6 +1,6 @@
-class reportBranches {
+class allReport{
   elements = {
-    openReportPage: () => cy.get(":nth-child(5) > a > .sidebarItem > span"),
+    openProductReportPage: () => cy.get('#full-width-tab-1 > .MuiTab-wrapper > .px-1'),
 
     reportByDate: () => cy.get(".gap-4 > .bg-white > .text-sm"),
 
@@ -8,15 +8,14 @@ class reportBranches {
 
     toDate: () => cy.get('[title="6 января 2023 г."] > .rc-calendar-date'),
 
-    enterTime: () => cy.get(":nth-child(2) > .rc-time-picker-input"),
-
     downloadReport: () => cy.get(".button > .items-center"),
 
     selectBranch: () => cy.contains("ayko"),
 
-    byTime: () => cy.get('#full-width-tab-1 > .MuiTab-wrapper > .px-1'),
+    selectOperator: () => cy.contains(),
 
-  };
+
+  }
 }
 
-module.exports = new reportBranches();
+module.exports = new allReport()
