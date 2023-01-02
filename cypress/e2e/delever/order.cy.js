@@ -194,6 +194,10 @@ describe('empty spec', () => {
 
     // cy.get(':nth-child(6) > a > .sidebarItem > span').click()
     // cy.get('#full-width-tab-1 > .MuiTab-wrapper > .px-1').click()
-    cy.get(':nth-child(7) > a > .sidebarItem > span').click()
+    // cy.get(':nth-child(7) > a > .sidebarItem > span').click()
+    cy.get(':nth-child(9) > a > .sidebarItem > span').click()
+    // cy.get('.py-3 > .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > #full-width-tab-1 > .MuiTab-wrapper > .px-1').click()
+    cy.get('.py-3 > .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > #full-width-tab-1').click()
+
   })
   })
