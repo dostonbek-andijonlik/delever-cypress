@@ -12,6 +12,10 @@ class SideBars {
 
     // Open Clients Page
     clientsPage: () => cy.get(":nth-child(3) > a.flex > .active-sidebar"),
+
+    //Reports Page
+    reportsPage: () => cy.get(':nth-child(7) > a.flex > .active-sidebar'),
+
   };
 }
 

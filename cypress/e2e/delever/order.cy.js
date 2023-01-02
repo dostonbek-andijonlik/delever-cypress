@@ -10,17 +10,17 @@ describe('empty spec', () => {
     cy.get('#login').type("oybek3");
     
     //Type Password
-    cy.wait(3000)
+    // cy.wait(3000)
     cy.get("#password").type("oybek1024");
 
     //show password 
     cy.get('.cursor-pointer > .MuiSvgIcon-root > path').click()  
-    cy.wait(3000)
+    // cy.wait(3000)
     cy.get('.button').click();
 
     //Orders page
     cy.get('.w-16 > :nth-child(2) > a.flex > .active-sidebar').click()  
-    cy.wait(3000)
+    // cy.wait(3000)
 
     //Pre-Order status
     // cy.get('#full-width-tab-0').click()   
@@ -94,7 +94,7 @@ describe('empty spec', () => {
   // cy.go('back')
 
   //Create Order Page
-  cy.get(':nth-child(4) > :nth-child(1) > .button > .items-center').click()  
+  // cy.get(':nth-child(4) > :nth-child(1) > .button > .items-center').click()  
   // cy.get(':nth-child(1) > :nth-child(1) > .alisa-input > .focus-within\:ring-2 > .bg-white > .w-auto > .flex-1').click({force:true})
   // cy.get(':nth-child(1) > :nth-child(1) > .alisa-input > .focus-within\:ring-2 > .bg-white > .w-auto > .flex-1').type('699999999{enter}')
   
@@ -132,16 +132,16 @@ describe('empty spec', () => {
   // cy.go('back')
 
   //Create New Order Page
-  cy.get(':nth-child(4) > :nth-child(1) > .button > .items-center').click({force: true})
+  // cy.get(':nth-child(4) > :nth-child(1) > .button > .items-center').click({force: true})
   
   // Select on the map to select branch
   // cy.get('.ymaps-2-1-79-events-pane').click({force: true})
 
   // Not to call
-  cy.get(':nth-child(4) > .MuiFormControl-root > .MuiFormGroup-root > .border-bordercolor > .MuiFormControlLabel-root > .MuiTypography-root').click({force: true})
+  // cy.get(':nth-child(4) > .MuiFormControl-root > .MuiFormGroup-root > .border-bordercolor > .MuiFormControlLabel-root > .MuiTypography-root').click({force: true})
 
   // Home Number
-  cy.get('#accommodation').type('56')
+  // cy.get('#accommodation').type('56')
 
   // Apartment
   // cy.get('#apartment').type('5')
@@ -154,5 +154,41 @@ describe('empty spec', () => {
 
   //Save order
     // cy.get(':nth-child(2) > .button').click()
+
+    //report
+    cy.get(':nth-child(7) > a.flex > .active-sidebar').click()
+    // cy.get(':nth-child(2) > a > .sidebarItem').click()
+    // cy.get(':nth-child(1) > a > .sidebarItem').click()
+    // cy.get('.border > .text-sm').click()
+    // cy.get('[title="5 января 2023 г."] > .rc-calendar-date').click()
+    // cy.get('[title="1 января 2023 г."] > .rc-calendar-date').click()
+    // cy.get('.button > .items-center').click()
+    // cy.get('.MuiTableHead-root > .MuiTableRow-root > :nth-child(16)').click()
+    // cy.get('.transition-all').click()
+    // cy.get('.cursor-pointer > .rc-switch').click()
+    // cy.get('.fill-current > .MuiSvgIcon-root').click()
+    // cy.get('.cursor-pointer > .rc-switch').click()
+    cy.get(':nth-child(2) > a > .sidebarItem > span').click()
+    // cy.get('.gap-4 > .bg-white > .text-sm').click()
+    // cy.get('[title="3 января 2023 г."] > .rc-calendar-date').click()
+    // cy.get('[title="1 января 2023 г."] > .rc-calendar-date').click()
+    // cy.get('.gap-4 > .h-9').click()
+    // cy.get('.MuiPaper-root > .rounded-lg > .p-4 > :nth-child(4)')
+    // cy.contains('ayko').click()
+    // cy.contains('Скачать').click()
+    // cy.get('.transition-all').click()
+    // cy.get(':nth-child(2) > .w-full > .rc-switch').click()
+    // cy.get('.transition-all').click()
+    // cy.get(':nth-child(2) > .w-full > .rc-switch').click()
+
+    // cy.get('.cursor-pointer > .rc-switch').click()
+    // cy.get(':nth-child(3) > a > .sidebarItem > span').click()
+    // cy.get('.button > .items-center > .text-sm').click()
+    cy.get(':nth-child(5) > a > .sidebarItem > span').click()
+    // cy.get('.gap-4 > .bg-white > .text-sm').click()
+    // cy.get('[title="1 января 2023 г."] > .rc-calendar-date').click()
+    // cy.get('[title="6 января 2023 г."] > .rc-calendar-date').click()
+    cy.get(':nth-child(2) > .rc-time-picker-input').click()
+    cy.get(':nth-child(1) > ul > .rc-time-picker-panel-select-option-selected').click()
   })
   })
