@@ -1,8 +1,5 @@
-class Client {
+class addClient {
   elements = {
-    // Open Clients Page
-    clientsPage: () => cy.get(":nth-child(3) > a.flex > .active-sidebar"),
-
     // Add button
     addButton: () => cy.get(".button"),
 
@@ -21,12 +18,12 @@ class Client {
     // Type Client's
     b2c: () => cy.get("#react-select-2-option-0"),
 
+    //add photo
+    addPhoto: () => cy.get('.Gallery > .mt-2'), 
+    
     // Save Button
     saveButton: () => cy.get(":nth-child(2) > .button"),
-
-    // Pagination
-    nextPage: () => cy.get(':nth-child(2) > .MuiButtonBase-root'),
-
-    
   };
 }
+
+module.exports = new addClient();

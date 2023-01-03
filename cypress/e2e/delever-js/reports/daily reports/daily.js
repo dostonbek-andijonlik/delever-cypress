@@ -11,7 +11,6 @@ class daily {
 
     downloadReport: () => cy.get(".button > .items-center"),
   
-
   };
 }
 

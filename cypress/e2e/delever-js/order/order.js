@@ -90,4 +90,4 @@ class Order {
 }
 
 
-module.exports = {Order}
+module.exports = new Order()
