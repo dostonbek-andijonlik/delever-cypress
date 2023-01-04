@@ -6,6 +6,11 @@ class loginPage {
     submitButton: () => cy.get(".button"),
   };
 
+  login() {
+    this.elements.usernameInput().type('oybek3')
+    this.elements.passwordInput().type('oybek1024')
+    this.elements.submitButton().click()
+  }
 
 }
 

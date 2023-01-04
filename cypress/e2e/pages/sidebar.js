@@ -17,6 +17,10 @@ class SideBars {
     reportsPage: () => cy.get(':nth-child(7) > a.flex > .active-sidebar'),
 
   };
+
+  clients(){
+    this.elements.clientsPage().click()
+  }
 }
 
 module.exports = new SideBars();

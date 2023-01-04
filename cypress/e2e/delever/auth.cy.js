@@ -10,9 +10,11 @@ describe("empty spec", () => {
   });
 
   it("passes", () => {
-    loginPage.elements.usernameInput().type('oybek3');
-    loginPage.elements.passwordInput().type('oybek1024 ');
+    loginPage.login()
+  });
+});
 
+// cy.go('back');
     // const login1 = new loginPage();
     // login1.getLogin.type('oybek3');
     // login1.getPassword.type("oybek1024");
@@ -26,6 +28,3 @@ describe("empty spec", () => {
     // cy.get('.mb-5 > :nth-child(3) > .p-4').click() // Couriers Count
     // cy.go('back');
     // cy.get('.w-16 > :nth-child(2) > a.flex > .active-sidebar').click()  //Orders
-    // cy.go('back');
-  });
-});
