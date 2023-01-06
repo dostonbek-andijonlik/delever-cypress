@@ -16,6 +16,9 @@ class SideBars {
     //Reports Page
     reportsPage: () => cy.get(':nth-child(7) > a.flex > .active-sidebar'),
 
+    // Personnel Page
+    personnelPage: () => cy.get(':nth-child(4) > a.flex > .active-sidebar > .text-secondary > .MuiSvgIcon-root'),
+    
   };
 }
 
