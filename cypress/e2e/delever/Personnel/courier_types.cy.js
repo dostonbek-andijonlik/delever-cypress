@@ -31,15 +31,7 @@ describe('Couriers types', () => {
   
   
     it.only('Adding Courier Type', () => { 
-        // const workSchedule = [
-        //   ['1005','2300', true],
-        //   ['1000','2300', true],
-        //   ['1000','2300', true],
-        //   ['1000','2300', true],
-        //   ['1000','2300', true],
-        //   ['1000','2300', true],
-        //   ['1000','2300', true],
-        // ]
+
         cy.wait(1000)     
         CouriersType.addCourierType(
           "cypress",

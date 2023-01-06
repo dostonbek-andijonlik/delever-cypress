@@ -12,6 +12,7 @@ class loginPage {
     this.elements.submitButton().click()
   }
 
+
 }
 
 module.exports = new loginPage();
