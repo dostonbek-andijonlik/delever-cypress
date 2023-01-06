@@ -18,7 +18,10 @@ class SideBars {
 
     // Personnel Page
     personnelPage: () => cy.get(':nth-child(4) > a.flex > .active-sidebar > .text-secondary > .MuiSvgIcon-root'),
-    
+   
+    //Marketing
+    marketingPage: () => cy.get(':nth-child(6) > a.flex > .active-sidebar'),
+
   };
 }
 
