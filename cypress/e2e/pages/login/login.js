@@ -11,6 +11,8 @@ class loginPage {
     this.elements.passwordInput().type("oybek1024");
     this.elements.submitButton().click();
   }
+
+
 }
 
 module.exports = new loginPage();

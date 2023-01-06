@@ -75,4 +75,7 @@ class Banners {
   }
 }
 
-module.exports = new Banners();
+module.exports = new Banners()
+
+
+//this is test comment
