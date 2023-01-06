@@ -28,6 +28,10 @@ class SideBars {
   marketing(){
     this.elements.marketingPage().click()
   }
+
+  catalog(){
+    this.elements.catalog().click()
+  }
 }
 
 module.exports = new SideBars();
