@@ -27,48 +27,7 @@ class CouriersType{
         FromTime: (n) => cy.get(`:nth-child(${n}) > :nth-child(2) > div > .rc-time-picker > .rc-time-picker-input`),
         ToTime: (n) => cy.get(`:nth-child(${n}) > :nth-child(3) > div > .rc-time-picker > .rc-time-picker-input`),
         Status: (n) => cy.get(`:nth-child(${n}) > :nth-child(4) > .rc-switch`),
-    
-        // worktime: [
-        //     {
-        //         FromTime: () => cy.get(':nth-child(1) > :nth-child(2) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         ToTime: () => cy.get(':nth-child(1) > :nth-child(3) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         Status: () => cy.get(':nth-child(1) > :nth-child(4) > .rc-switch'),
-        //     },
-        //     {
-        //         FromTime: () => cy.get(':nth-child(2) > :nth-child(2) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         ToTime: () => cy.get(':nth-child(2) > :nth-child(3) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         Status: () => cy.get(':nth-child(2) > :nth-child(4) '),
-              
-        //     },
-        //     {
-        //         FromTime: () =>  cy.get(':nth-child(3) > :nth-child(2) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         ToTime: () => cy.get(':nth-child(3) > :nth-child(3) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         Status: () =>cy.get(':nth-child(3) > :nth-child(4) '),
-        //     },
-        //     {
-        //         FromTime: () => cy.get(':nth-child(4) > :nth-child(2) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         ToTime: () => cy.get(':nth-child(4) > :nth-child(3) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         Status: () => cy.get(':nth-child(4) > :nth-child(4) '), 
-        //     },
-        //     {
-        //         FromTime: () => cy.get(':nth-child(5) > :nth-child(2) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         ToTime: () => cy.get(':nth-child(5) > :nth-child(3) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         Status: () => cy.get(':nth-child(5) > :nth-child(4) '), 
-            
-        //     },
-        //     {
-        //         FromTime: () => cy.get(':nth-child(6) > :nth-child(2) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         ToTime: () => cy.get(':nth-child(6) > :nth-child(3) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         Status: () => cy.get(':nth-child(6) > :nth-child(4) '),
-                
-        //     },
-        //     {
-        //         FromTime: () => cy.get(':nth-child(7) > :nth-child(2) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         ToTime: () => cy.get(':nth-child(7) > :nth-child(3) > div > .rc-time-picker > .rc-time-picker-input'),
-        //         Status: () => cy.get(':nth-child(7) > :nth-child(4)')    
-        //     }
-        // ], 
-           
+             
         saveButton: () => cy.get(':nth-child(2) > .button'),
         cancelButton: () => cy.get(':nth-child(1) > .button')
     }
