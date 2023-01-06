@@ -1,7 +1,6 @@
 class daily {
   elements = {
-
-    openPage: () => cy.get(':nth-child(14) > a > .sidebarItem'),
+    openPage: () => cy.get(":nth-child(14) > a > .sidebarItem"),
 
     reportByDate: () => cy.get(".gap-4 > .bg-white > .text-sm"),
 
@@ -10,7 +9,6 @@ class daily {
     toDate: () => cy.get('[title="6 января 2023 г."] > .rc-calendar-date'),
 
     downloadReport: () => cy.get(".button > .items-center"),
-  
   };
 }
 

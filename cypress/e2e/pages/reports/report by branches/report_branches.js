@@ -14,8 +14,7 @@ class reportBranches {
 
     selectBranch: () => cy.contains("ayko"),
 
-    byTime: () => cy.get('#full-width-tab-1 > .MuiTab-wrapper > .px-1'),
-
+    byTime: () => cy.get("#full-width-tab-1 > .MuiTab-wrapper > .px-1"),
   };
 }
 

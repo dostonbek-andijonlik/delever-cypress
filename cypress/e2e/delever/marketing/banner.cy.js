@@ -31,22 +31,20 @@ describe("Marketing Banner", () => {
     loginPage.login();
     SideBar.marketing();
     Banners.banners();
-    Banners.updateAction('Rus', 'Eng', 'Uzb');
+    Banners.updateAction("Rus", "Eng", "Uzb");
   });
 
-  it('Delete one Banner', () => {
-    loginPage.login()
-    SideBar.marketing()
-    Banners.banners()
-    Banners.deleteBanner()
-  })
+  it("Delete one Banner", () => {
+    loginPage.login();
+    SideBar.marketing();
+    Banners.banners();
+    Banners.deleteBanner();
+  });
 
-  it('Add banner', () => {
-    loginPage.login()
-    SideBar.marketing()
-    Banners.banners()
-    Banners.addBanner2('Rus', 'Eng')
-  })
-
-
+  it("Add banner", () => {
+    loginPage.login();
+    SideBar.marketing();
+    Banners.banners();
+    Banners.addBanner2("Rus", "Eng");
+  });
 });

@@ -38,61 +38,76 @@ class Catalog {
     simple: () => cy.contains("Простой"),
 
     // Kombo
-    combo: () => cy.contains('Комбо'),
+    combo: () => cy.contains("Комбо"),
 
     //Category
-    category: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(1) > :nth-child(1) > #category_ids > .css-8pw2m5-control > .css-19ppke0'),
+    category: () =>
+      cy.get(
+        "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(1) > :nth-child(1) > #category_ids > .css-8pw2m5-control > .css-19ppke0"
+      ),
 
     //Naptiki
-    softDrinks: () =>  cy.contains('Напитки'),
+    softDrinks: () => cy.contains("Напитки"),
     //Combo
-    combo: () =>  cy.contains('Комбо'),
-    
+    combo: () => cy.contains("Комбо"),
+
     //Lavash
-    lavash: () =>  cy.contains('Лаваш'),
-    
+    lavash: () => cy.contains("Лаваш"),
+
     //Cartofel
-    typeCartofel: () =>  cy.contains('Тип Картофель Фри'),
-    
+    typeCartofel: () => cy.contains("Тип Картофель Фри"),
+
     //Brand
-    brand: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(2) > :nth-child(2) > .text-body > #brand > .select__control > .select__value-container').click(),
+    brand: () =>
+      cy
+        .get(
+          "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(2) > :nth-child(2) > .text-body > #brand > .select__control > .select__value-container"
+        )
+        .click(),
 
     // delimiy/nedelimiy
-    delimiy_nedelimiy: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(3) > :nth-child(2) > .text-body > #is_divisible > .select__control > .select__value-container'),
-    
+    delimiy_nedelimiy: () =>
+      cy.get(
+        "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(3) > :nth-child(2) > .text-body > #is_divisible > .select__control > .select__value-container"
+      ),
+
     //delimiy
-    delimiy: () => cy.contains('Делимый'),
+    delimiy: () => cy.contains("Делимый"),
 
     //nedelimiy
-    nedelemiy: () => cy.contains('Не делимый'),
+    nedelemiy: () => cy.contains("Не делимый"),
 
     //measurementUnits
-    measurement: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(5) > :nth-child(1) > .text-body > #unit > .select__control > .select__value-container'),
+    measurement: () =>
+      cy.get(
+        "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(5) > :nth-child(1) > .text-body > #unit > .select__control > .select__value-container"
+      ),
 
     //litre
-    litre: () => cy.contains('Литр'),
+    litre: () => cy.contains("Литр"),
 
     //kg
-    kg: () => cy.contains('Килограмм'),
+    kg: () => cy.contains("Килограмм"),
 
     //ml
-    milliltr: () => cy.contains('Миллилитр'),
+    milliltr: () => cy.contains("Миллилитр"),
 
     //shtuka
-    count: () => cy.contains('Штука'),
+    count: () => cy.contains("Штука"),
 
     //gram
-    gram: () => cy.contains('Грамм'),
+    gram: () => cy.contains("Грамм"),
 
     //inPrice
-    inPrice: () => cy.get('#in_price'),
+    inPrice: () => cy.get("#in_price"),
 
     //Out Price
-    outprice: () => cy.get('#out_price'),
+    outprice: () => cy.get("#out_price"),
 
     //Characteristics
-    characteristics: () => cy.get('#property_ids\[0\]\.value > .select__control > .select__value-container'),
-
-    
+    characteristics: () =>
+      cy.get(
+        "#property_ids[0].value > .select__control > .select__value-container"
+      ),
   };
 }

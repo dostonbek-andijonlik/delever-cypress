@@ -5,7 +5,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 
 import loginPage from "/cypress/e2e/pages/login/login";
 
-import Notifications  from "../../pages/Marketing/notificaitons";
+import Notifications from "../../pages/Marketing/notificaitons";
 
 import SideBar from "../../pages/sidebar";
 
@@ -20,17 +20,17 @@ describe("Marketing Banner", () => {
     Notifications.notif();
   });
 
-  it('Item Limit', () => {
+  it("Item Limit", () => {
     loginPage.login();
     SideBar.marketing();
     Notifications.notif();
-    Notifications.itemLimit()
-  })
+    Notifications.itemLimit();
+  });
 
-  it.only('Add notification', () => {
+  it.only("Add notification", () => {
     loginPage.login();
     SideBar.marketing();
     Notifications.notif();
-    Notifications.addNotif('Name1', 'Description')
-  })  
+    Notifications.addNotif("Name1", "Description");
+  });
 });

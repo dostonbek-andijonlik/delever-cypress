@@ -28,16 +28,14 @@ class Order {
     allOrders: () => cy.get("#full-width-tab-6"), // All orders
     // cy.wait(3000)
     updateToken: () =>
-      cy
-        .get(":nth-child(1) > :nth-child(1) > .button > .flex > .text-sm"),
-        //Update token
+      cy.get(":nth-child(1) > :nth-child(1) > .button > .flex > .text-sm"),
+    //Update token
     // cy.wait(3000);
     bill: () =>
-      cy
-        .get(
-          ":nth-child(2) > :nth-child(1) > .button > .items-center > .text-sm"
-        ),
-        // Vystavyt shyot
+      cy.get(
+        ":nth-child(2) > :nth-child(1) > .button > .items-center > .text-sm"
+      ),
+    // Vystavyt shyot
     // cy.wait(3000);
 
     //type number into Vistavyt shot
@@ -53,8 +51,7 @@ class Order {
     //     .get(".select__single-value css-1uccc91-singleValue")
     //     .contains("Apelsin")
     //     .click(),
-    showOnTheMap: () =>
-      cy.get(":nth-child(3) > :nth-child(1) > .button"), //Show on the map,
+    showOnTheMap: () => cy.get(":nth-child(3) > :nth-child(1) > .button"), //Show on the map,
 
     // client phone number
     clientNum: () =>
@@ -89,5 +86,4 @@ class Order {
   };
 }
 
-
-module.exports = new Order()
+module.exports = new Order();

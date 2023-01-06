@@ -31,7 +31,16 @@ describe("Marketing Popup", () => {
     loginPage.login();
     SideBar.marketing();
     Popups.openPage();
-    Popups.updatePopup('Rus terminology', 'Rus Description here', '0001', '2359', 'English Name', "English description", "Uzbek Name", "Uzbek Description", 9);
+    Popups.updatePopup(
+      "Rus terminology",
+      "Rus Description here",
+      "0001",
+      "2359",
+      "English Name",
+      "English description",
+      "Uzbek Name",
+      "Uzbek Description",
+      9
+    );
   });
-
 });

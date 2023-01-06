@@ -1,6 +1,7 @@
-class dailyReport{
+class dailyReport {
   elements = {
-    openProductReportPage: () => cy.get('#full-width-tab-1 > .MuiTab-wrapper > .px-1'),
+    openProductReportPage: () =>
+      cy.get("#full-width-tab-1 > .MuiTab-wrapper > .px-1"),
 
     reportByDate: () => cy.get(".gap-4 > .bg-white > .text-sm"),
 
@@ -11,8 +12,7 @@ class dailyReport{
     downloadReport: () => cy.get(".button > .items-center"),
 
     selectBranch: () => cy.contains("ayko"),
-
-  }
+  };
 }
 
-module.exports = new dailyReport()
+module.exports = new dailyReport();

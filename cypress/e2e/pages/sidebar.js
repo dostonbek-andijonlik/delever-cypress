@@ -2,11 +2,11 @@ class SideBars {
   elements = {
     //personal
     personalOpenPage: () => cy.get(".is-active-sidebar > .active-sidebar"),
-    
+
     //Orders
     ordersPage: () =>
-    cy.get(".w-16 > :nth-child(2) > a.flex > .active-sidebar"),
-    
+      cy.get(".w-16 > :nth-child(2) > a.flex > .active-sidebar"),
+
     //Catalog
     catalog: () => cy.get(":nth-child(5) > a.flex > .active-sidebar"),
 
@@ -14,23 +14,22 @@ class SideBars {
     clientsPage: () => cy.get(":nth-child(3) > a.flex > .active-sidebar"),
 
     //Reports Page
-    reportsPage: () => cy.get(':nth-child(7) > a.flex > .active-sidebar'),
+    reportsPage: () => cy.get(":nth-child(7) > a.flex > .active-sidebar"),
 
     //Marketing
-    marketingPage: () => cy.get(':nth-child(6) > a.flex > .active-sidebar'),
-
+    marketingPage: () => cy.get(":nth-child(6) > a.flex > .active-sidebar"),
   };
 
-  clients(){
-    this.elements.clientsPage().click()
+  clients() {
+    this.elements.clientsPage().click();
   }
 
-  marketing(){
-    this.elements.marketingPage().click()
+  marketing() {
+    this.elements.marketingPage().click();
   }
 
-  catalog(){
-    this.elements.catalog().click()
+  catalog() {
+    this.elements.catalog().click();
   }
 }
 

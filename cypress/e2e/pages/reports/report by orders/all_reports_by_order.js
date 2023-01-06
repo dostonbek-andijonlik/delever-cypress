@@ -1,8 +1,9 @@
-class allReports{
+class allReports {
   elements = {
-    openPage: () => cy.get(':nth-child(8) > a > .sidebarItem > span'),
+    openPage: () => cy.get(":nth-child(8) > a > .sidebarItem > span"),
 
-    openAllReportSection: () => cy.get('#full-width-tab-1 > .MuiTab-wrapper > .px-1'),
+    openAllReportSection: () =>
+      cy.get("#full-width-tab-1 > .MuiTab-wrapper > .px-1"),
 
     reportByDate: () => cy.get(".gap-4 > .bg-white > .text-sm"),
 
@@ -14,22 +15,34 @@ class allReports{
 
     selectBranch: () => cy.contains("ayko"),
 
-    allAggregators: () => cy.get(':nth-child(2) > a > .sidebarItem > span'),
+    allAggregators: () => cy.get(":nth-child(2) > a > .sidebarItem > span"),
 
     source: () => cy.contains("Источник"),
 
-    bot: () => cy.get('[style="position: fixed; z-index: 1300; inset: 0px;"] > .MuiPaper-root > .rounded-lg > .p-4 > :nth-child(2)'),
+    bot: () =>
+      cy.get(
+        '[style="position: fixed; z-index: 1300; inset: 0px;"] > .MuiPaper-root > .rounded-lg > .p-4 > :nth-child(2)'
+      ),
 
-    deliveryType: () =>  cy.contains('Тип доставки'),
+    deliveryType: () => cy.contains("Тип доставки"),
 
-    dostavka: () => cy.get('[style="position: fixed; z-index: 1300; inset: 0px;"] > .MuiPaper-root > .rounded-lg > .p-4 > :nth-child(1)'),
+    dostavka: () =>
+      cy.get(
+        '[style="position: fixed; z-index: 1300; inset: 0px;"] > .MuiPaper-root > .rounded-lg > .p-4 > :nth-child(1)'
+      ),
 
-    couriers: () => cy.contains('Курьеры'),
+    couriers: () => cy.contains("Курьеры"),
 
-    oneCourier: () => cy.get('[style="position: fixed; z-index: 1300; inset: 0px;"] > .MuiPaper-root > .rounded-lg > .p-4 > :nth-child(2)'),
+    oneCourier: () =>
+      cy.get(
+        '[style="position: fixed; z-index: 1300; inset: 0px;"] > .MuiPaper-root > .rounded-lg > .p-4 > :nth-child(2)'
+      ),
 
-    paymentTypeButton: () => cy.contains('Способ оплаты'),
+    paymentTypeButton: () => cy.contains("Способ оплаты"),
 
-    onePaymentType: () => cy.get('[style="position: fixed; z-index: 1300; inset: 0px;"] > .MuiPaper-root > .rounded-lg > .p-4 > :nth-child(3)')
-   }
+    onePaymentType: () =>
+      cy.get(
+        '[style="position: fixed; z-index: 1300; inset: 0px;"] > .MuiPaper-root > .rounded-lg > .p-4 > :nth-child(3)'
+      ),
+  };
 }

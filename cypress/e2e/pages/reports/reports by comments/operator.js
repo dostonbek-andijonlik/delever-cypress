@@ -7,4 +7,4 @@ class operators {
   };
 }
 
-module.exports = new operators()
+module.exports = new operators();

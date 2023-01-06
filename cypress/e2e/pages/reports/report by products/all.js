@@ -1,6 +1,7 @@
-class allReport{
+class allReport {
   elements = {
-    openProductReportPage: () => cy.get('#full-width-tab-1 > .MuiTab-wrapper > .px-1'),
+    openProductReportPage: () =>
+      cy.get("#full-width-tab-1 > .MuiTab-wrapper > .px-1"),
 
     reportByDate: () => cy.get(".gap-4 > .bg-white > .text-sm"),
 
@@ -13,9 +14,7 @@ class allReport{
     selectBranch: () => cy.contains("ayko"),
 
     selectOperator: () => cy.contains(),
-
-
-  }
+  };
 }
 
-module.exports = new allReport()
+module.exports = new allReport();

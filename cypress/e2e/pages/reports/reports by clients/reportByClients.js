@@ -1,6 +1,6 @@
-class reportClients{
+class reportClients {
   elements = {
-    openPage: () => cy.get('.is-active > .sidebarItem > span'),
+    openPage: () => cy.get(".is-active > .sidebarItem > span"),
 
     reportByDate: () => cy.get(".gap-4 > .bg-white > .text-sm"),
 
@@ -14,8 +14,6 @@ class reportClients{
 
     selectBranch: () => cy.contains("ayko"),
 
-    byTime: () => cy.get('#full-width-tab-1 > .MuiTab-wrapper > .px-1'),
-
-    
-  }
+    byTime: () => cy.get("#full-width-tab-1 > .MuiTab-wrapper > .px-1"),
+  };
 }
