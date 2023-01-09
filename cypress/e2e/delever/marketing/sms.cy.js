@@ -8,7 +8,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   import SMS from '../../pages/Marketing/sms'
   
   
-  describe('SMS', () => {
+  describe('SMS', () => { 
     
     beforeEach(() => {
       //logine
