@@ -7,23 +7,37 @@ import loginPage from "/cypress/e2e/pages/login/login";
 
 import SideBar from "../../pages/sidebar";
 
-// import GetAllProducts from "../../pages/catalog/tovar/get_tovar";
 import GetAllProducts from "../../pages/catalog/tovar/get_tovar";
 
-describe("Marketing Popup", () => {
+import Catalog from "../../pages/catalog/tovar/new_tovar";
+
+describe("Catalog Product", () => {
   beforeEach(() => {
     cy.visit("https://test.admin.delever.uz/#/home/dashboard");
+    loginPage.login();
+    SideBar.catalog();
+    
   });
 
   it("open products page", () => {
-    loginPage.login();
-    SideBar.catalog();
-    GetAllProducts.open();
+   GetAllProducts.open();
   });
 
-  it("Update Product", () => {
-    loginPage.login();
-    SideBar.catalog();
+  it("Add Simple Product", () => {
+    GetAllProducts.nextPage1();
+    Catalog.addProduct(
+      "Rus Name",
+      "Rus Desc",
+      4,
+      12000,
+      18000,
+      "Englis Title",
+      "English desc",
+      "Uzbek Name",
+      "Uzbek desc"
+    );
+    });
+  it("Update Simple Product", () => {
     GetAllProducts.editProduct(
       "Rus Name",
       "English Name",
@@ -33,15 +47,21 @@ describe("Marketing Popup", () => {
     );
   });
 
+  it("Delete Simple Product", () => {
+    GetAllProducts.deleteSimpleProduct();
+  });
+
+
   it("Pagination Counts", () => {
-    loginPage.login();
-    SideBar.catalog();
     GetAllProducts.itemLimit();
   });
 
   it("Next Page", () => {
-    loginPage.login();
-    SideBar.catalog();
     GetAllProducts.nextPage1();
   });
+
+  it.only("Add recommendation for products", () => {
+    
+  })
+
 });

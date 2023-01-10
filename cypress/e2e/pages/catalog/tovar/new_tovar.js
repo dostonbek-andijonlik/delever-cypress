@@ -12,19 +12,35 @@ class Catalog {
     // ru desc
     ruDesc: () => cy.get("#description_ru"),
 
+    // englishPage
+    openEnglishPage: () => cy.get('.p-4 > .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > #full-width-tab-1'),
+
+    // ru title
+    engTitle: () => cy.get("#title_en"),
+
+    // ru desc
+    engDesc: () => cy.get("#description_en"),
+
+    // uzbPage
+    openUzbPage: () => cy.get('#full-width-tab-2'),
+
+    // ru title
+    uzTitle: () => cy.get("#title_uz"),
+
+    // ru desc
+    uzDesc: () => cy.get("#description_uz"),
+
     // order number
     orderNumber: () =>
       cy.get(
-        "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .justify-between > .w-4/5 > :nth-child(2) > .alisa-input > .focus-within:ring-2 > .bg-white > .flex"
+        "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .justify-between > .w-4\\/5 > :nth-child(2) > .alisa-input > .focus-within\\:ring-2 > .bg-white > .flex > #order"
       ),
 
     //Click product type
     typeProduct: () =>
-      cy
-        .get(
-          "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > :nth-child(6) > .text-body > #type > .select__control > .select__value-container"
-        )
-        .click({ force: true }),
+      cy.get(
+        "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > :nth-child(6) > .text-body > #type > .select__control"
+      ),
 
     //Variativniy
     variants: () => cy.contains("Вариативный"),
@@ -45,6 +61,9 @@ class Catalog {
       cy.get(
         "#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(1) > :nth-child(1) > #category_ids > .css-8pw2m5-control > .css-19ppke0"
       ),
+
+    //simple product
+    simpleCategory: () => cy.contains("простой товар"),
 
     //Naptiki
     softDrinks: () => cy.contains("Напитки"),
@@ -105,9 +124,35 @@ class Catalog {
     outprice: () => cy.get("#out_price"),
 
     //Characteristics
-    characteristics: () =>
-      cy.get(
-        "#property_ids[0].value > .select__control > .select__value-container"
-      ),
+    characteristics: () =>cy.get('#property_ids\\[0\\]\\.value > .select__control > .select__value-container'),
+      
+    saveProduct: () => cy.get(':nth-child(2) > .button'),
+
+    
   };
+    
+    addProduct(ruName, ruDesc, orderNum, inPrice, outPrice, engName, engDesc, uzbName, uzbDesc) {
+    this.elements.add().click();
+    this.elements.ruTitle().type(ruName);
+    this.elements.ruDesc().type(ruDesc);
+    // this.elements.characteristics().click({force: true})
+    this.elements.orderNumber().type(orderNum);
+    this.elements.typeProduct().click({ force: true });
+    this.elements.simple().click({ force: true });
+    this.elements.category().click({ force: true });
+    this.elements.simpleCategory().click({ force: true });
+    this.elements.measurement().click({ force: true });
+    this.elements.count().click({ force: true });
+    this.elements.inPrice().type(inPrice);
+    this.elements.outprice().type(outPrice);
+    this.elements.openEnglishPage().click({force: true})
+    this.elements.engTitle().type(engName)
+    this.elements.engDesc().type(engDesc)
+    this.elements.openUzbPage().click({force: true})
+    this.elements.uzTitle().type(uzbName, {force: true})
+    this.elements.uzDesc().type(uzbDesc)
+    this.elements.saveProduct().click({force : true})
+  }
 }
+
+module.exports = new Catalog();

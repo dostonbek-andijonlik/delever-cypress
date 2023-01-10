@@ -63,6 +63,11 @@ class GetAllProducts {
     nextPage: () => cy.get(":nth-child(9) > .MuiButtonBase-root"),
 
     saveButton: () => cy.get(":nth-child(2) > .button"),
+
+    confirmDeleteButton: () => cy.get(':nth-child(2) > .button > .flex'),
+    
+    tableBody: () => cy.get('.MuiTableBody-root')
+
   };
 
   open() {
@@ -95,6 +100,12 @@ class GetAllProducts {
   itemLimit() {
     this.elements.paginationCount().click({ force: true });
     this.elements.thirtyItms().click({ force: true });
+  }
+
+  deleteSimpleProduct(){
+    this.elements.edit().click({ force: true });
+    this.elements.deleteProduct().click()
+    this.elements.confirmDeleteButton().click({force: true})    
   }
 }
 
