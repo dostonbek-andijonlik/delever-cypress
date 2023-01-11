@@ -81,7 +81,11 @@ describe("Catalog Product", () => {
   })
 
   it.only("Update Modifier", () => {
-    GetAllProducts.editModifier()
+    GetAllProducts.editModifier(
+      1,
+      4,
+      "modificator"
+    )
   })
 
 });
