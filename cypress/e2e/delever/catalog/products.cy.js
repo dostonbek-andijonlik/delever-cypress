@@ -92,7 +92,13 @@ describe("Catalog Product", () => {
     Catalog.createModificator(
       "Russian Name",
       "Russian Descr",
-      3
+      3,
+      12500,
+      20000,
+      "English Name",
+      "English Descr",
+      "Uzbek Name",
+      "Uzbek Desc",
     )
   })
 

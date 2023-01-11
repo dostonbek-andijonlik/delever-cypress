@@ -71,6 +71,8 @@ class Catalog {
     //Combo
     combo: () => cy.contains("Комбо"),
 
+    hotdog: () => cy.contains('Хотдог'),
+
     //Lavash
     lavash: () => cy.contains("Лаваш"),
 
@@ -125,8 +127,11 @@ class Catalog {
     outprice: () => cy.get("#out_price"),
 
     //Characteristics
-    characteristics: () =>cy.get('#property_ids\\[0\\]\\.value > .select__control > .select__value-container'),
-      
+    // characteristics: () =>cy.get('#property_ids\[0\]\.value > .select__control'),
+    characteristics: () => cy.get('.mt-6').find('input').eq(0),
+
+    firstCharec: () => cy.contains('salad'),
+
     saveProduct: () => cy.get(':nth-child(2) > .button'),
   };
     
@@ -153,15 +158,34 @@ class Catalog {
     this.elements.saveProduct().click({force : true})
   }
 
-  createModificator(ruName, ruDesc, orderNum) {
+  createModificator(ruName, ruDesc, orderNum, inPrice, outPrice, engName, engDesc, uzbName, uzbDesc) {
     this.elements.catalog().click();
     cy.wait(2000)
     this.elements.add().click({multiple: true});
+    cy.wait(3000)
+    this.elements.characteristics().click({force: true})
+    this.elements.firstCharec().click({force: true})
     this.elements.ruTitle().type(ruName);
     this.elements.ruDesc().type(ruDesc);
     this.elements.orderNumber().type(orderNum);
-    // this.elements.typeProduct().click({ force: true });
-    this.elements.main().click({force: true})
+    this.elements.typeProduct().click({ force: true });
+    cy.wait(2000)
+    this.elements.modificator().click({force: true})
+    this.elements.category().click({force: true})
+    this.elements.hotdog().click({force: true})
+    this.elements.measurement().click({ force: true });
+    this.elements.milliltr().click({ force: true });
+    this.elements.inPrice().type(inPrice, {force: true});
+    this.elements.outprice().type(outPrice, {force: true});
+    this.elements.openEnglishPage().click({force: true})
+    this.elements.engTitle().type(engName)
+    this.elements.engDesc().type(engDesc)
+    this.elements.openUzbPage().click({force: true})
+    this.elements.uzTitle().type(uzbName, {force: true})
+    this.elements.uzDesc().type(uzbDesc)
+    cy.wait(2000)
+    this.elements.saveProduct().click({force : true})
+
   }
 
 }
