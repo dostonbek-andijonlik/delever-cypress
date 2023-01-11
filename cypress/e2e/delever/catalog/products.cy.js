@@ -7,7 +7,7 @@ import loginPage from "/cypress/e2e/pages/login/login";
 
 import SideBar from "../../pages/sidebar";
 
-import GetAllProducts from "../../pages/catalog/tovar/Simple Product/get_tovar";
+import GetAllProducts from "../../pages/catalog/tovar/get_tovar";
 
 import Catalog from "../../pages/catalog/tovar/new_tovar";
 
@@ -25,7 +25,7 @@ describe("Catalog Product", () => {
 
   it("Add Simple Product", () => {
     GetAllProducts.nextPage1();
-    Catalog.addProduct(
+    Catalog.addSimpleProduct(
       "Rus Name",
       "Rus Desc",
       4,
@@ -80,11 +80,19 @@ describe("Catalog Product", () => {
     GetAllProducts.deleteModifier()
   })
 
-  it.only("Update Modifier", () => {
+  it("Update Modifier", () => {
     GetAllProducts.editModifier(
       1,
       4,
       "modificator"
+    )
+  })
+
+  it.only("Open General Products Page", () => {
+    Catalog.createGeneralProducts(
+      "Russian Name",
+      "Russian Descr",
+      3
     )
   })
 
