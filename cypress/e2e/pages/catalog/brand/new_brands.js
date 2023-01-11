@@ -1,4 +1,3 @@
-const cypress = require("cypress");
 
 class NewBrands {
   elements = {
@@ -20,6 +19,9 @@ class NewBrands {
 
     cancelButton: () => cy.get(":nth-child(1) > .button"),
   };
+
+
+
 }
 
 module.exports = new NewBrands();
