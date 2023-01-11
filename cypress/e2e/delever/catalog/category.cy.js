@@ -11,6 +11,10 @@ import Category from "../../pages/catalog/categories/get_categories";
 
 import NewCategory from "../../pages/catalog/categories/new_category"
 
+
+const imagesPath = 'C:/Users/ASUS/cypress/cypress/e2e/delever-cypress/cypress/fixtures/person.jpg'
+
+
 describe("Catalog categories", () => {
   beforeEach(() => {
     cy.visit("https://test.admin.delever.uz/#/home/dashboard");
@@ -58,7 +62,8 @@ describe("Catalog categories", () => {
       "En Subcat",
       "En Desc ",
       "2",
-      "Сэндвич"     
+      "Сэндвич",
+      imagesPath     
     )
   });
 
@@ -76,5 +81,13 @@ describe("Catalog categories", () => {
       "Субкат Ру"
 
     )
+  });
+  
+  it.only('Delete Subcategory', () => {
+    cy.wait(1000)
+    NewCategory.deleteSubcategory(
+      "Редак Субкат Ру"
+    )
+    
   });
 });

@@ -1,14 +1,17 @@
 // const cypress = require("cypress");
 
+const { deleteCategory } = require("./get_categories")
+
 
 class NewCategory{
   elements = {
     categoryOpenPage: () => cy.get(':nth-child(2) > a > .sidebarItem'),
     searchForCategory: () => cy.get('.focus-within\\:ring-2 > .bg-white > .flex > .flex-1'),
     actions: () => cy.get(':nth-child(1) > :nth-child(4) > .flex > .ActionMenu > .MuiButtonBase-root > .MuiButton-label'),
-    addButton: () => cy.get('.button'),//cy.contains('+ Добавит'),
+    addButton: () => cy.get('.button'),
     editCategory: () => cy.get('.MuiTableBody-root > :nth-child(1) > :nth-child(4)'),
     reductirovate: () => cy.get('[tabindex="0"] > .ml-2'),
+    addPhoto: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid > .col-span-3 > .h-full > .Gallery > .add-block'),
 
      // ru title
      ruTitle: () => cy.get("#title_ru"),
@@ -30,11 +33,12 @@ class NewCategory{
      uzDesc: () => cy.get("#description_uz"),
 
      order_no: () => cy.get('#order_no'),
-
+    deleteCategory: () => cy.get('.MuiList-root > [tabindex="-1"]'),
+     
      categorySelect: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid > .col-span-9 > :nth-child(3)'),
 
 
-     statusButton: () =>cy.get('.p-4 > [style="overflow-x: hidden;"] > .react-swipeable-view-container > [aria-hidden="false"]'),
+     statusButton: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid > .col-span-9 > :nth-child(5)'),
 
      orderNum: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid > .col-span-9 > :nth-child(4)'),
 
@@ -50,11 +54,13 @@ class NewCategory{
     this.elements.enTitle().type(enName, {force: true})
     this.elements.uzTitle().type(uzName, {force: true})
     this.elements.orderNum().find('input').type(number)
-    this.elements.statusButton().find('button').click({force: true}, {multiple: true})
+    this.elements.statusButton().find('button').click({force: true})
     this.elements.saveButton().click()
   }
 
 
+
+  // SMY35 ------------------------------------
   addSubcategory(
     ruName,
     rudesc,
@@ -64,11 +70,13 @@ class NewCategory{
     uzDesc,
     number,
     parentCategory,
+    imagePath
   ){
     this.elements.categoryOpenPage().click()
     this.elements.addButton().click()
     this.elements.categorySelect().find('input').click({force: true})
     cy.contains(parentCategory).click()
+    this.elements.addPhoto().find('input').selectFile(imagePath, {force: true})
     this.elements.ruTitle().type(ruName, {force: true})
     this.elements.ruDesc().type(rudesc)
     this.elements.enTitle().type(enName, {force: true})
@@ -77,12 +85,11 @@ class NewCategory{
     this.elements.uzDesc().type(uzDesc, {force:true})
     
     this.elements.orderNum().find('input').type(number)
-    this.elements.statusButton().find('button').click({force: true}, {multiple: true})
+    this.elements.statusButton().find('button').click()
     this.elements.saveButton().click()
+    this.elements.categoryOpenPage().click()
     this.elements.tableBody().contains(parentCategory).click()
-    cy.contains(ruName)
-
-    
+    cy.contains(ruName) 
     
 
   }
@@ -100,7 +107,7 @@ class NewCategory{
     categoryName
   ){
     this.elements.categoryOpenPage().click()
-    this.elements.searchForCategory().type(categoryName)
+    this.elements.searchForCategory().click().type(categoryName)
     cy.wait(1000)
     this.elements.actions().click({force:true})
     this.elements.reductirovate().click()
@@ -120,6 +127,25 @@ class NewCategory{
     cy.contains(newRuName)
     
   }
+
+
+  deleteSubcategory(
+    categoryName
+  ){
+    this.elements.categoryOpenPage().click()
+    cy.wait(1000)
+    this.elements.searchForCategory().type(categoryName)
+    cy.wait(2000)
+    this.elements.actions().click()
+    this.elements.deleteCategory().click()
+    cy.wait(1000)
+    cy.get(':nth-child(2) > .button').click()
+    this.elements.searchForCategory().click().clear().type(categoryName).type('{enter}')
+    this.elements.tableBody().should('not.have.value', categoryName)
+    
+  }
+
+  // --------------------------------------
 }
 
 module.exports = new NewCategory();
