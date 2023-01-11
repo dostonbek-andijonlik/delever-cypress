@@ -44,6 +44,7 @@ class Catalog {
 
     //Variativniy
     variants: () => cy.contains("Вариативный"),
+   
     // Glavniy
     main: () => cy.contains("Главный"),
 
@@ -131,7 +132,7 @@ class Catalog {
     
   };
     
-    addProduct(ruName, ruDesc, orderNum, inPrice, outPrice, engName, engDesc, uzbName, uzbDesc) {
+    addSimpleProduct(ruName, ruDesc, orderNum, inPrice, outPrice, engName, engDesc, uzbName, uzbDesc) {
     this.elements.add().click();
     this.elements.ruTitle().type(ruName);
     this.elements.ruDesc().type(ruDesc);
@@ -153,6 +154,18 @@ class Catalog {
     this.elements.uzDesc().type(uzbDesc)
     this.elements.saveProduct().click({force : true})
   }
+
+  createGeneralProducts(ruName, ruDesc, orderNum) {
+    this.elements.catalog().click();
+    this.elements.add().click({multiple: true});
+    this.elements.ruTitle().type(ruName);
+    this.elements.ruDesc().type(ruDesc);
+    this.elements.orderNumber().type(orderNum);
+    this.elements.typeProduct().click({ force: true });
+    this.elements.main().click({force: true})
+  }
+
+
 }
 
 module.exports = new Catalog();
