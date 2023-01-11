@@ -3,7 +3,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-import loginPage from "/cypress/e2e/pages/login/login";
+import loginPage from "../../pages/login/login";
 
 import SideBar from "../../pages/sidebar";
 
@@ -14,17 +14,15 @@ import NewCategory from "../../pages/catalog/categories/new_category"
 describe("Catalog categories", () => {
   beforeEach(() => {
     cy.visit("https://test.admin.delever.uz/#/home/dashboard");
+    loginPage.login();
+    SideBar.catalog();
   });
 
   it("open category page", () => {
-    loginPage.login();
-    SideBar.catalog();
     Category.openPage();
   });
 
   it("Update category", () => {
-    loginPage.login();
-    SideBar.catalog();
     Category.editCategory(
       "Rus Name",
       "English Name",
@@ -34,8 +32,6 @@ describe("Catalog categories", () => {
   });
 
   it("Add Category", () => {
-    loginPage.login();
-    SideBar.catalog();
     NewCategory.addCategory(
       "Rus Name",
       "Eng Name",
@@ -45,14 +41,40 @@ describe("Catalog categories", () => {
   });
 
   it("Delete Category", () => {
-    loginPage.login();
-    SideBar.catalog();
     Category.deleteCategory();
   });
 
-  it.only("Next Page", ()=>{
-    loginPage.login();
-    SideBar.catalog();
+  it("Next Page", ()=>{
     Category.nextPage()
   })
+
+  it.only('Add Subcategory', () => {
+    cy.wait(1000)
+    NewCategory.addSubcategory(
+      "Субкат Ру",
+      "Субкат описание",
+      "Uz Subcat",
+      "Uz Desc ",
+      "En Subcat",
+      "En Desc ",
+      "2",
+      "Сэндвич"     
+    )
+  });
+
+  it.only('Edit Category', () => {
+    cy.wait(1000)
+    NewCategory.editSubcategory(
+      "Редак Субкат Ру",
+      "Редак Субкат описание",
+      "Edited Uz Subcat",
+      "Edited Uz Desc ",
+      "Edited En Subcat",
+      "Edited En Desc ",
+      "2",
+      "Хотдог",
+      "Субкат Ру"
+
+    )
+  });
 });
