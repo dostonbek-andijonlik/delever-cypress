@@ -51,11 +51,11 @@ Cypress.on("uncaught:exception", (err, runnable) => {
     });
   
   
-    it('Choose Client Period', () => {
+    it.only('Choose Client Period', () => {
         cy.wait(1000)
         SMS.clientDatePicker(
           "13 января 2023 г.",
-          "25 января 2023 г."
+          "25 февраля 2023 г."
         )
     });
   

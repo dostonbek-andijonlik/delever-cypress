@@ -24,8 +24,8 @@ class Brand {
   searchBrand(
     brandName
   ){
+    cy.wait(1000)
     this.elements.searchForBrands().click().type(brandName).type('{enter}')
-    
     this.elements.tableBody().should('contain', brandName)
     
   }
