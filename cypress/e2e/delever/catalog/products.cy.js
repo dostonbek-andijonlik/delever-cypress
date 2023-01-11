@@ -88,8 +88,8 @@ describe("Catalog Product", () => {
     )
   })
 
-  it.only("Create General", () => {
-    Catalog.createGeneralProducts(
+  it.only("Create modifiers", () => {
+    Catalog.createModificator(
       "Russian Name",
       "Russian Descr",
       3
