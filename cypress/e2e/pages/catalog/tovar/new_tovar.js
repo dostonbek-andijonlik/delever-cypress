@@ -153,17 +153,16 @@ class Catalog {
     this.elements.saveProduct().click({force : true})
   }
 
-  // createGeneralProducts(ruName, ruDesc, orderNum) {
-  //   this.elements.catalog().click();
-  //   cy.wait(2000)
-  //   this.elements.add().click({multiple: true});
-  //   // this.elements.ruTitle().type(ruName);
-  //   // this.elements.ruDesc().type(ruDesc);
-  //   // this.elements.orderNumber().type(orderNum);
-  //   // // this.elements.typeProduct().click({ force: true });
-  //   // this.elements.main().click({force: true})
-  // }
-
+  createModificator(ruName, ruDesc, orderNum) {
+    this.elements.catalog().click();
+    cy.wait(2000)
+    this.elements.add().click({multiple: true});
+    this.elements.ruTitle().type(ruName);
+    this.elements.ruDesc().type(ruDesc);
+    this.elements.orderNumber().type(orderNum);
+    // this.elements.typeProduct().click({ force: true });
+    this.elements.main().click({force: true})
+  }
 
 }
 
