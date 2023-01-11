@@ -25,7 +25,7 @@ describe("Catalog Product", () => {
 
   it("Add Simple Product", () => {
     GetAllProducts.nextPage1();
-    Catalog.addProduct(
+    Catalog.addSimpleProduct(
       "Rus Name",
       "Rus Desc",
       4,
@@ -80,8 +80,20 @@ describe("Catalog Product", () => {
     GetAllProducts.deleteModifier()
   })
 
-  it.only("Update Modifier", () => {
-    GetAllProducts.editModifier()
+  it("Update Modifier", () => {
+    GetAllProducts.editModifier(
+      1,
+      4,
+      "modificator"
+    )
+  })
+
+  it.only("Create modifiers", () => {
+    Catalog.createModificator(
+      "Russian Name",
+      "Russian Descr",
+      3
+    )
   })
 
 });

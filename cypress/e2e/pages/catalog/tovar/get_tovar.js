@@ -96,7 +96,7 @@ class GetAllProducts {
 
     selectModifName: () => cy.get('.css-1hwfws3'),
 
-    modifName: () => cy.get('#react-select-24-option-0'),
+    modifName: () => cy.get('#react-select-25-option-1'),
 
     addButton: () => cy.get('.grid > :nth-child(2) > .button > .flex'),
 
@@ -194,6 +194,8 @@ class GetAllProducts {
     this.elements.saveChanges().click({force: true})
   }
 
+  //bu comment branchdan kelgan 
+
   editModifier(minAmount, maxAmount, modifName){
     this.elements.edit().click({ force: true });
     this.elements.redactivate().click();
@@ -207,6 +209,7 @@ class GetAllProducts {
     this.elements.selectModifName().type(modifName)
     cy.wait(3000)
     this.elements.modifName().click({force: true})
+    this.elements.addButton().click({force: true})
   }
 
   deleteModifier(){
