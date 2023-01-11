@@ -7,7 +7,7 @@ import loginPage from "/cypress/e2e/pages/login/login";
 
 import SideBar from "../../pages/sidebar";
 
-import GetAllProducts from "../../pages/catalog/tovar/get_tovar";
+import GetAllProducts from "../../pages/catalog/tovar/Simple Product/get_tovar";
 
 import Catalog from "../../pages/catalog/tovar/new_tovar";
 
