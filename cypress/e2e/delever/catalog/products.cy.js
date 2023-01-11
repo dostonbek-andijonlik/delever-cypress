@@ -88,7 +88,7 @@ describe("Catalog Product", () => {
     )
   })
 
-  it.only("Open General Products Page", () => {
+  it.only("Create General", () => {
     Catalog.createGeneralProducts(
       "Russian Name",
       "Russian Descr",
