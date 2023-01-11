@@ -193,7 +193,8 @@ class GetAllProducts {
     this.elements.confirmDeletion().click({force: true})
     this.elements.saveChanges().click({force: true})
   }
-  
+
+  //bu comment branchdan kelgan 
 
   editModifier(minAmount, maxAmount, modifName){
     this.elements.edit().click({ force: true });
