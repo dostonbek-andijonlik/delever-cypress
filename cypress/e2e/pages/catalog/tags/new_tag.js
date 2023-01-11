@@ -1,15 +1,15 @@
-class NewTag {
+class Tag {
   elements = {
     addButton: () => cy.contains("+ Добавит"),
-
+    tags_page: () => cy.get(':nth-child(7) > a > .sidebarItem'),
     // ru title
     ruTitle: () => cy.get("#title_ru"),
-
+    search: () => cy.get('.focus-within\\:ring-2 > .bg-white > .flex > .flex-1'),
     // en title
-    ruTitle: () => cy.get("#title_en"),
+    enTitle: () => cy.get("#title_en"),
 
     // uz title
-    ruTitle: () => cy.get("#title_uz"),
+    uzTitle: () => cy.get("#title_uz"),
 
     tagName: () => cy.get("#name"),
 
@@ -17,6 +17,8 @@ class NewTag {
 
     cancelButton: () => cy.get(":nth-child(1) > .button"),
   };
+
+
 }
 
-module.exports = new NewTag();
+module.exports = new Tag();
