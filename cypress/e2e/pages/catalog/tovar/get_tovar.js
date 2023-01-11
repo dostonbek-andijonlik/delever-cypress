@@ -64,9 +64,56 @@ class GetAllProducts {
 
     saveButton: () => cy.get(":nth-child(2) > .button"),
 
-    confirmDeleteButton: () => cy.get(':nth-child(2) > .button > .flex'),
+    confirmDeleteButton: () => cy.get(":nth-child(2) > .button > .flex"),
+
+    linkedProdPage: () =>
+      cy.get(
+        ".flex > :nth-child(1) > .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > #full-width-tab-1"
+      ),
+
+    // addLinkProd: () => cy.contains('Добавить'),
+    addLinkProd: () => cy.get("button").contains("Добавить"),
+
+    addProd: () => cy.get('.css-1hwfws3'),
+
+    nameProd: () => cy.contains('Американский бургер'),
     
-    tableBody: () => cy.get('.MuiTableBody-root')
+    nameProd2: () => cy.contains('pizza iiko modificator'),
+
+    confirmButton: () => cy.get('.grid > :nth-child(2) > .button'),
+
+    selecProd: () => cy.get(".css-1hwfws3"),
+
+    saveRecomended: () => cy.get(':nth-child(2) > .button'),
+
+    openModificatorPage: () => cy.get('.m-4 > :nth-child(1) > .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > #full-width-tab-1'),
+
+    addModificButton: () => cy.get("button").contains("Добавить товары"),
+
+    addMinAmount: () => cy.get('#min_amount'),
+
+    addMaxAmount: () => cy.get('#max_amount'),
+
+    selectModifName: () => cy.get('.css-1hwfws3'),
+
+    modifName: () => cy.get('#react-select-24-option-0'),
+
+    addButton: () => cy.get('.grid > :nth-child(2) > .button > .flex'),
+
+    saveProd: () => cy.get(':nth-child(2) > .button > .items-center'),
+
+    deleteLinkedProd: () => cy.get(':nth-child(5) > .flex > .cursor-pointer'),
+
+    confirmDeletion: () => cy.get('.grid > :nth-child(2) > .button > .flex'),
+
+    saveChanges: () => cy.get(':nth-child(2) > .button'),
+
+    editModif: () => cy.get(':nth-child(1) > :nth-child(8) > .flex > .ActionMenu > .MuiButtonBase-root'),
+
+    deleteModifButton: () => cy.get('.MuiList-root > [tabindex="-1"]'),
+
+    editModifButton: () => cy.get('.MuiList-root > [tabindex="0"]'),
+
 
   };
 
@@ -85,7 +132,7 @@ class GetAllProducts {
     this.elements.typeProduct().click();
     this.elements.simpleType().click({ force: true });
     this.elements.category().click({ force: true });
-    this.elements.categoryType().click({force:true});
+    this.elements.categoryType().click({ force: true });
     this.elements.priceIn().clear({ force: true }).type(price1);
     this.elements.priceOut().clear({ force: true }).type(price2);
     this.elements.saveButton().click();
@@ -102,10 +149,76 @@ class GetAllProducts {
     this.elements.thirtyItms().click({ force: true });
   }
 
-  deleteSimpleProduct(){
+  deleteSimpleProduct() {
     this.elements.edit().click({ force: true });
-    this.elements.deleteProduct().click()
-    this.elements.confirmDeleteButton().click({force: true})    
+    this.elements.deleteProduct().click();
+    this.elements.confirmDeleteButton().click({ force: true });
+  }
+
+  addRecommendedProd() {
+    this.elements.edit().click({ force: true });
+    this.elements.redactivate().click();
+    this.elements.linkedProdPage().click({ force: true });
+    cy.wait(3000);
+    this.elements.addLinkProd().click({ force: true });
+    this.elements.addProd().click({force: true})
+    this.elements.nameProd().click({force: true})
+    this.elements.confirmButton().click({force: true})
+    this.elements.saveRecomended().click( {multiple: true}, {force: true})
+  }
+
+  addModifier(minAmount, maxAmount, modifName){
+    this.elements.edit().click({ force: true });
+    this.elements.redactivate().click();
+    this.elements.linkedProdPage().click({ force: true });
+    cy.wait(3000);
+    this.elements.openModificatorPage().click({force: true})
+    cy.wait(3000);
+    this.elements.addModificButton().click({force: true})
+    this.elements.addMinAmount().type(minAmount)
+    this.elements.addMaxAmount().type(maxAmount)
+    this.elements.selectModifName().type(modifName)
+    cy.wait(3000)
+    this.elements.modifName().click({force: true})
+    this.elements.addButton().click({force :true})
+    this.elements.saveProd().click({multiple: true}, {force: true})
+  }
+  
+  deleteLinkedProduct(){
+    this.elements.edit().click({ force: true });
+    this.elements.redactivate().click();
+    this.elements.linkedProdPage().click({ force: true });
+    cy.wait(3000);
+    this.elements.deleteLinkedProd().click({force: true})
+    this.elements.confirmDeletion().click({force: true})
+    this.elements.saveChanges().click({force: true})
+  }
+
+  editModifier(minAmount, maxAmount, modifName){
+    this.elements.edit().click({ force: true });
+    this.elements.redactivate().click();
+    this.elements.linkedProdPage().click({ force: true });
+    cy.wait(3000);
+    this.elements.openModificatorPage().click({force:true})
+    this.elements.editModif().click({force: true})
+    this.elements.editModifButton().click({force: true})
+    this.elements.addMinAmount().clear().type(minAmount)
+    this.elements.addMaxAmount().clear().type(maxAmount)
+    this.elements.selectModifName().type(modifName)
+    cy.wait(3000)
+    this.elements.modifName().click({force: true})
+  }
+
+  deleteModifier(){
+    this.elements.edit().click({ force: true });
+    this.elements.redactivate().click();
+    this.elements.linkedProdPage().click({ force: true });
+    cy.wait(3000);
+    this.elements.openModificatorPage().click({force:true})
+    this.elements.editModif().click({force: true})
+    this.elements.deleteModifButton().click({force: true})
+    this.elements.confirmDeletion().click({force: true})
+
   }
 }
 

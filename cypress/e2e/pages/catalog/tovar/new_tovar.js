@@ -142,9 +142,9 @@ class Catalog {
     this.elements.category().click({ force: true });
     this.elements.simpleCategory().click({ force: true });
     this.elements.measurement().click({ force: true });
-    this.elements.count().click({ force: true });
-    this.elements.inPrice().type(inPrice);
-    this.elements.outprice().type(outPrice);
+    this.elements.milliltr().click({ force: true });
+    this.elements.inPrice().type(inPrice, {force: true});
+    this.elements.outprice().type(outPrice, {force: true});
     this.elements.openEnglishPage().click({force: true})
     this.elements.engTitle().type(engName)
     this.elements.engDesc().type(engDesc)

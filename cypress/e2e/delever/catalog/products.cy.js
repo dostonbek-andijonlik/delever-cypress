@@ -60,8 +60,28 @@ describe("Catalog Product", () => {
     GetAllProducts.nextPage1();
   });
 
-  it.only("Add recommendation for products", () => {
-    
+  it("Add recommendation for products", () => {
+    GetAllProducts.addRecommendedProd()
+  })
+
+  it("Add modifier to simple product", () => {
+    GetAllProducts.addModifier(
+      2,
+      5,
+      "modificator{enter}"
+    )
+  })
+
+  it("Delete linked product", () => {
+    GetAllProducts.deleteLinkedProduct()
+  })
+
+  it("Delete Modifier product",  () => {
+    GetAllProducts.deleteModifier()
+  })
+
+  it.only("Update Modifier", () => {
+    GetAllProducts.editModifier()
   })
 
 });
