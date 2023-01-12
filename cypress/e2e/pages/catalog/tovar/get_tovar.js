@@ -221,7 +221,6 @@ class GetAllProducts {
     this.elements.editModif().click({force: true})
     this.elements.deleteModifButton().click({force: true})
     this.elements.confirmDeletion().click({force: true})
-
   }
 }
 
