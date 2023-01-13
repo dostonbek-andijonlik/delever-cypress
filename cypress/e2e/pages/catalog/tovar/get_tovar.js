@@ -6,7 +6,7 @@ class GetAllProducts {
     //edit button
     edit: () =>
       cy.get(
-        ":nth-child(1) > :nth-child(10) > .flex > .ActionMenu > .MuiButtonBase-root > .MuiButton-label"
+        ":nth-child(2) > :nth-child(10) > .flex > .ActionMenu > .MuiButtonBase-root > .MuiButton-label"
       ),
 
     //redaktirovat
@@ -114,7 +114,21 @@ class GetAllProducts {
 
     editModifButton: () => cy.get('.MuiList-root > [tabindex="0"]'),
 
+    deleteOption: () => cy.get('.items-baseline > .cursor-pointer'),
 
+
+    addCharBtn: () => cy.get('.mt-6').contains('Добавить'),
+
+    characteristics: () => cy.get('.mt-6').find('input').eq(2),
+
+    addNewCharect: () => cy.contains('Размер'),
+
+    addNewOption: () => cy.get('.mt-6').find('button').eq(2),
+
+    plusBtn: () => cy.get('.bg-primary'),
+
+    deleteOptionBtn: () => cy.get('.my-2 > .mt-4 > :nth-child(2) > .focus\:outline-none'),
+    
   };
 
   open() {
@@ -194,8 +208,6 @@ class GetAllProducts {
     this.elements.saveChanges().click({force: true})
   }
 
-  //bu comment branchdan kelgan 
-
   editModifier(minAmount, maxAmount, modifName){
     this.elements.edit().click({ force: true });
     this.elements.redactivate().click();
@@ -221,6 +233,38 @@ class GetAllProducts {
     this.elements.editModif().click({force: true})
     this.elements.deleteModifButton().click({force: true})
     this.elements.confirmDeletion().click({force: true})
+  }
+  
+  deleteCharact(){
+    this.elements.catalog().click();
+    cy.wait(2000)
+    this.elements.edit().click();
+    this.elements.redactivate().click();
+    this.elements.deleteOption().click()
+    this.elements.saveButton().click()
+  }
+
+  addCharact(){
+    this.elements.catalog().click();
+    cy.wait(2000)
+    this.elements.edit().click();
+    this.elements.redactivate().click();
+    cy.wait(3000)
+    this.elements.addCharBtn().click({force: true})
+    this.elements.characteristics().click({force: true})
+    this.elements.addNewOption().click()
+    this.elements.saveButton().click()
+
+  }
+
+  deleteCharOption(){
+    this.elements.catalog().click();
+    cy.wait(2000)
+    this.elements.edit().click();
+    this.elements.redactivate().click();
+    cy.wait(3000)
+    this.elements.plusBtn().click() 
+    this.elements.deleteOptionBtn().click()
   }
 }
 

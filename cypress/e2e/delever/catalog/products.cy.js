@@ -7,7 +7,7 @@ import loginPage from "/cypress/e2e/pages/login/login";
 
 import SideBar from "../../pages/sidebar";
 
-import GetAllProducts from "../../pages/catalog/tovar/get_tovar";
+import GetAllProducts, { deleteCharact } from "../../pages/catalog/tovar/get_tovar";
 
 import Catalog from "../../pages/catalog/tovar/new_tovar";
 
@@ -106,9 +106,25 @@ describe("Catalog Product", () => {
     );
   });
 
-  it.only("Add recommended product to the modificator", () => {
+  it("Add recommended product to the modificator", () => {
     Catalog.addLinkedProductToModif(
       "овощи{enter}",
     )
   });
+
+  it("User can add option to characteristics in modifier product", () => {
+    Catalog.addOptionToCharacterisitcs()
+  })
+
+  it("User can delete characteristics item in modifier product", () => {
+    GetAllProducts.deleteCharact()
+  })
+
+  it("User can add characteristics item in modifier product", () => {
+    GetAllProducts.addCharact()
+  })
+
+  it.only("User can delete option in characteristics in modifier product", () => {
+    GetAllProducts.deleteCharOption()
+  })
 });
