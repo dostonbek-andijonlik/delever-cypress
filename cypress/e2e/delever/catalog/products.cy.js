@@ -21,7 +21,6 @@ describe("Catalog Product", () => {
     cy.visit("https://test.admin.delever.uz/#/home/dashboard");
     loginPage.login();
     SideBar.catalog();
-    cy.viewport(1700, 780)
   });
 
   it("open products page", () => {
@@ -103,22 +102,7 @@ describe("Catalog Product", () => {
 
 
 
-  it.only('Add General Product', () => {
-    cy.wait(1000)
-    GetAllProducts.addGenProd(
-      "сайпресс",
-      "сайпресс описание",
-      '1',
-      "123",
-      "321",
-      "cypress",
-      "cypress description",
-      "cypress uz",
-      "cypress desc",
-      "Главный",
-      "Хотдог"
-    )
-  });
+
 
 
 
@@ -219,5 +203,23 @@ describe("Catalog Product", () => {
       )
   });
   // -------------------------------------------------
+  it("Update Modificator", () => {
+    Catalog.editModifier(
+      "Updated Modificator",
+      "Updated descr",
+      5,
+      12350,
+      21000,
+      "Updated Modif",
+      "Updated descr",
+      "Updated Name",
+      "Updated Desc"
+    );
+  });
 
+  it.only("Add recommended product to the modificator", () => {
+    Catalog.addLinkedProductToModif(
+      "овощи{enter}",
+    )
+  });
 });
