@@ -184,7 +184,6 @@ class Catalog {
 
     continue: () => cy.get('.grid > :nth-child(2) > .button'),
 
-    plusBtn: () => cy.get('.bg-primary'),
   };
     
     addSimpleProduct(ruName, ruDesc, orderNum, inPrice, outPrice, engName, engDesc, uzbName, uzbDesc) {
@@ -307,22 +306,12 @@ class Catalog {
     this.elements.plus().click({force: true})
     this.elements.addOption().click({force: true})
     this.elements.optionBar().type(product).click({force: true})
-    // this.elements.continue().click({force: true})
+    this.elements.continue().click({force: true})
+    // this.elements.dropDown().click({force: true})
+    // this.elements.connectProd().find('button').click()
+  
 
   }
-
-  addOptionToCharacterisitcs(){
-    this.elements.catalog().click();
-    cy.wait(2000)
-    this.elements.edit().click();
-    this.elements.redactivate().click()
-    cy.wait(3000)
-    // this.elements.plusBtn().find('button').eq(1)
-    this.elements.plusBtn().click({force: true})
-    cy.wait(2200)
-    
-  }
-
 }
 
 module.exports = new Catalog();

@@ -82,7 +82,7 @@ class GetAllProducts {
     //edit button
     edit: () =>
       cy.get(
-        ":nth-child(2) > :nth-child(10) > .flex > .ActionMenu > .MuiButtonBase-root > .MuiButton-label"
+        ":nth-child(1) > :nth-child(10) > .flex > .ActionMenu > .MuiButtonBase-root > .MuiButton-label"
       ),
 
     //redaktirovat
@@ -190,21 +190,7 @@ class GetAllProducts {
 
     editModifButton: () => cy.get('.MuiList-root > [tabindex="0"]'),
 
-    deleteOption: () => cy.get('.items-baseline > .cursor-pointer'),
 
-
-    addCharBtn: () => cy.get('.mt-6').contains('Добавить'),
-
-    characteristics: () => cy.get('.mt-6').find('input').eq(2),
-
-    addNewCharect: () => cy.contains('Размер'),
-
-    addNewOption: () => cy.get('.mt-6').find('button').eq(2),
-
-    plusBtn: () => cy.get('.bg-primary'),
-
-    deleteOptionBtn: () => cy.get('.my-2 > .mt-4 > :nth-child(2) > .focus\:outline-none'),
-    
   };
 
   open() {
@@ -284,6 +270,8 @@ class GetAllProducts {
     this.elements.saveChanges().click({force: true})
   }
 
+  //bu comment branchdan kelgan 
+
   editModifier(minAmount, maxAmount, modifName){
     this.elements.edit().click({ force: true });
     this.elements.redactivate().click();
@@ -310,11 +298,267 @@ class GetAllProducts {
     this.elements.deleteModifButton().click({force: true})
     this.elements.confirmDeletion().click({force: true})
   }
-}
+
+  // SMY35 For general product
+  linkProductToVariation(
+    genProdName,
+    prodName
+  ){
+      this.elements.search().click().type(genProdName).type('{enter}')
+      cy.wait(1000)
+      this.elements.actions().click()
+      this.elements.editButton().click()
+      this.elements.linkedProducts().click()
+      this.elements.variationButton().click()
+      cy.wait(1000)
+      this.elements.linktoVariationButton().click()
+      this.elements.searchFieldLinkToVariation().click().type(prodName).type('{enter}')
+      cy.wait(3000)
+      this.elements.firstSelecBox().click()
+      this.elements.saveLinkVariationProductButton().click()
+      this.elements.variationsTable().should('contain', prodName)
+  }
+
+  addVariation(
+      genProduct,
+      characteristicsOptionName,
+      inPrice,
+      outPrice,
+      imagePath
+  ){
+      this.elements.search().click().type(genProduct).type('{enter}')
+      cy.wait(1000)
+      this.elements.actions().click()
+      this.elements.editButton().click()
+      this.elements.linkedProducts().click()
+      this.elements.variationButton().click()
+      this.elements.addVariationButton().click()
+      this.elements.chooseVariationOption().click()
+      cy.get('.css-1jtftj7').contains(characteristicsOptionName).click()
+      this.elements.continueButton().click({force:true})
+      this.elements.generateArtikulVariation().click()
+      this.elements.inPriceVariation().click().type(inPrice)
+      this.elements.outPriceVariation().click().type(outPrice)
+      this.elements.addPhotoVariation().find('input').selectFile(imagePath, {force:true})
+      this.elements.saveVariationButton().click()
+      this.elements.variationsTable().should('contain', genProduct + " "+characteristicsOptionName)
+  }
+
+
+  deleteVariation(
+      genProdName,
+      variationName
+  ){
+      this.elements.search().click().type(genProdName).type('{enter}')
+      cy.wait(1000)
+      this.elements.actions().click()
+      this.elements.editButton().click()
+      this.elements.linkedProducts().click()
+      this.elements.variationButton().click()
+      cy.request(
+      {
+          url: "https://test.shipper-user.api.delever.uz/v2/product/759e05ec-215c-4f07-8c95-da1abf10eda8",
+          method: "GET",
+          headers: {
+              authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzQ1MzgzNzAsImlhdCI6MTY3MzI0MjM3MCwiaXNzIjoidXNlciIsInNoaXBwZXJfaWQiOiJkNGIxNjU4Zi0zMjcxLTQ5NzMtODU5MS05OGE4MjkzOWE2NjQiLCJzdWIiOiIyMjVlYWE3OC02ZmRkLTRiZDUtYmY1Yi00MWVkNDI5MzBlMmQiLCJ1c2VyX3JvbGVfaWQiOiI0MTlmMzFkZS0yYTA3LTQ1ZjYtYThiZC1hOWNiYTIxZTcxM2QiLCJ1c2VyX3R5cGVfaWQiOiIyYTFlZmQ0YS1kNTI3LTRjYzItYWRmYS1hNzU0NjAyMWYwZjYifQ.zuzQNk17ZywuJZMYEqASzndcgoJ5yBkLxYjH1e5qgWc"
+          }
+      }).then((response) => {
+          const variations = response.body.variant_products
+          let ind;
+          for(let i=0; i<variations.length;i++){
+              if(variations[i].title.ru == (variationName)){
+                  ind = i+1;
+                  break;
+              }
+          }
+
+          this.elements.variationDeleteButton(ind).click()
+          cy.contains("Да").click()
+          this.elements.variationsTable().should('not.have.value', variationName)            
+      })
+  }
+
+  addGenProd(
+      ruName,
+      ruDesc,
+      enName,
+      enDesc,
+      uzName,
+      uzDesc,
+      status,
+      seqNumber,
+      typeName,
+      categoryName,
+      brand,
+      isDiv,
+      tag,
+      measurUnit,
+      currencyVal,
+      ikpu,
+      packCode,
+      inPrice,
+      outPrice,
+      imagePath
+  ){
+      this.elements.addGenButton().click()
+      cy.wait(1000)
+
+      // this.elements.characteristics()
+
+      cy.wait(1000)
+
+      this.elements.ruTitle().click().type(ruName)
+      this.elements.ruDescription().click().type(ruDesc)
+      this.elements.addPhoto().find('input').selectFile(imagePath, {force:true})
+      this.elements.enField().click()
+      this.elements.enTitle().click().type(enName)
+      this.elements.enDescription().click().type(enDesc)
+      this.elements.uzField().click()
+      this.elements.uzTitle().click().type(uzName)
+      this.elements.uzDescription().click().type(uzDesc)
+
+          // if(status){
+          //     this.elements.statusButton().find('button').click()
+          // }
+      cy.wait(1000)
+      this.elements.ruField().click()
+      this.elements.sequenceNumber().click().type(seqNumber)
+      // this.elements.artikulGenButton().click()
+      cy.wait(1000)
+      //this.elements.productType().click()
+      cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > :nth-child(6) > .text-body > #type > .select__control > .select__value-container').click()
+      this.elements.selectMenuList().contains(typeName).click()
+
+
+      cy.wait(1000)
+      this.elements.categoryType().click({force:true})
+      cy.wait(1000)
+      cy.contains(categoryName).click()
+      this.elements.brand().click()
+      cy.wait(1000)
+      cy.contains(brand).click()
+
+      this.elements.isDivisible().click()
+      cy.wait(1000)
+      cy.contains(isDiv).click()
+      this.elements.tagField().click()
+      cy.wait(1000)
+      cy.contains(tag).click()
+      this.elements.measurementUnit().click()
+      cy.wait(1000)
+      cy.contains(measurUnit).click()
+      this.elements.IKPU().click().type(ikpu)
+      this.elements.codePack().click().type(packCode)
+      this.elements.incomePrice().click().type(inPrice)
+      this.elements.outputPrice().click().type(outPrice)
+
+      cy.get('#property_ids\\[0\\]\\.value > .select__control').click()
+      cy.wait(4000)
+      cy.contains('salad').click()
+      this.elements.createButton().click()
+      cy.wait(1000)
+      this.elements.productsTable().should('contain', ruName)
+
+  }
+
+  ediGenProd(
+      productToEdit,
+      ruName,
+      ruDesc,
+      enName,
+      enDesc,
+      uzName,
+      uzDesc,
+      status,
+      seqNumber,
+      ikpu,
+      packCode,
+      inPrice,
+      outPrice
+
+  ){
+      this.elements.search().click().type(productToEdit).type('{enter}')
+      this.elements.actions().click()
+      this.elements.editButton().click()
+
+      this.elements.ruTitle().click().clear().type(ruName)
+      this.elements.ruDescription().click().clear().type(ruDesc)
+      this.elements.enField().click()
+      this.elements.enTitle().clear().click().type(enName)
+      this.elements.enDescription().clear().click().type(enDesc)
+      this.elements.uzField().click()
+      this.elements.uzTitle().click().clear().type(uzName)
+      this.elements.uzDescription().click().clear().type(uzDesc)
+
+          // if(status){
+          //     this.elements.statusButton().find('button').click()
+          // }
+      cy.wait(1000)
+      this.elements.ruField().click()
+      this.elements.sequenceNumber().click().type(seqNumber)
+      // this.elements.artikulGenButton().click()
+      cy.wait(1000)
+      //this.elements.productType().click()
+
+
+
+      this.elements.IKPU().click().clear().type(ikpu)
+      this.elements.codePack().click().clear().type(packCode)
+      this.elements.incomePrice().click().clear().type(inPrice)
+      this.elements.outputPrice().click().clear().type(outPrice)
+
+
+      this.elements.createButton().click()
+  }
+
+  deleteGenProd(
+      name
+  ){
+      this.elements.search().click().type(name).type('{enter}')
+      cy.wait(2000)
+      this.elements.actions().click()
+      this.elements.deleteButton().click()
+      cy.get(':nth-child(2) > .button').click()
+      this.elements.tableBody().should('not.have.value', name)
+  }
+
+
+  linkProducts(
+      genProductName,
+      products
+  ){
+      this.elements.search().click().type(genProductName).type('{enter}')
+      this.elements.actions().click()
+      this.elements.editButton().click()
+      this.elements.linkedProducts().click()
+      this.elements.addProduct().click()
+      this.elements.chooseProductToLink().click()
+      cy.contains(products).click()
+      cy.wait(2000)
+      this.elements.confirmButton().click()
+      this.elements.tableBody().should('contain', products)
+      cy.wait(1000)
+      this.elements.saveButton().click()
+  }
+
+  deleteLinkedProduct(
+      genProductName,
+      deleteLinkedProductName
+  ){
+      this.elements.search().click().type(genProductName).type('{enter}')
+      this.elements.actions().click()
+      this.elements.editButton().click()
+      this.elements.linkedProducts().click()
+      this.elements.deleteLinkedProduct().click()
+      cy.contains("Да").click()
+      this.elements.tableBody().should('not.have.value', deleteLinkedProductName)
+      cy.wait(1000)
+      this.elements.saveButton().click()
+  }
 
 
   
 
-
+}
 
 module.exports = new GetAllProducts();
