@@ -24,7 +24,7 @@ describe("Catalog Product", () => {
   });
 
   it("open products page", () => {
-   GetAllProducts.open();
+    GetAllProducts.open();
   });
 
   it("Add Simple Product", () => {
@@ -40,7 +40,7 @@ describe("Catalog Product", () => {
       "Uzbek Name",
       "Uzbek desc"
     );
-    });
+  });
   it("Update Simple Product", () => {
     GetAllProducts.editProduct(
       "Rus Name",
@@ -55,7 +55,6 @@ describe("Catalog Product", () => {
     GetAllProducts.deleteSimpleProduct();
   });
 
-
   it("Pagination Counts", () => {
     GetAllProducts.itemLimit();
   });
@@ -65,38 +64,56 @@ describe("Catalog Product", () => {
   });
 
   it("Add recommendation for products", () => {
-    GetAllProducts.addRecommendedProd()
-  })
+    GetAllProducts.addRecommendedProd();
+  });
 
   it("Add modifier to simple product", () => {
-    GetAllProducts.addModifier(
-      2,
-      5,
-      "modificator{enter}"
-    )
-  })
+    GetAllProducts.addModifier(2, 5, "modificator{enter}");
+  });
 
   it("Delete linked product", () => {
-    GetAllProducts.deleteLinkedProduct()
-  })
+    GetAllProducts.deleteLinkedProduct();
+  });
 
-  it("Delete Modifier product",  () => {
-    GetAllProducts.deleteModifier()
-  })
+  it("Delete Modifier product", () => {
+    GetAllProducts.deleteModifier();
+  });
 
   it("Update Modifier", () => {
-    GetAllProducts.editModifier(
-      1,
-      4,
-      "modificator"
-    )
-  })
+    GetAllProducts.editModifier(1, 4, "modificator");
+  });
 
   it("Create modifiers", () => {
     Catalog.createModificator(
       "Russian Name",
       "Russian Descr",
-      3
+      3,
+      12500,
+      20000,
+      "English Name",
+      "English Descr",
+      "Uzbek Name",
+      "Uzbek Desc"
+    );
+  });
+
+  it("Update Modificator", () => {
+    Catalog.editModifier(
+      "Updated Modificator",
+      "Updated descr",
+      5,
+      12350,
+      21000,
+      "Updated Modif",
+      "Updated descr",
+      "Updated Name",
+      "Updated Desc"
+    );
+  });
+
+  it.only("Add recommended product to the modificator", () => {
+    Catalog.addLinkedProductToModif(
+      "овощи{enter}",
     )
   })
 
