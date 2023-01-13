@@ -116,13 +116,7 @@ describe("Catalog Product", () => {
       "овощи{enter}",
     )
   })
-
-
-
-
-
-
-
+  
   // SMY35 General product 
   it('Add General Product', () => {
     cy.wait(1000)
@@ -220,23 +214,5 @@ describe("Catalog Product", () => {
       )
   });
   // -------------------------------------------------
-  it("Update Modificator", () => {
-    Catalog.editModifier(
-      "Updated Modificator",
-      "Updated descr",
-      5,
-      12350,
-      21000,
-      "Updated Modif",
-      "Updated descr",
-      "Updated Name",
-      "Updated Desc"
-    );
-  });
 
-  it.only("Add recommended product to the modificator", () => {
-    Catalog.addLinkedProductToModif(
-      "овощи{enter}",
-    )
-  });
 });
