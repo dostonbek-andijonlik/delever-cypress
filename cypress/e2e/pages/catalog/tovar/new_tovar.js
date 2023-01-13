@@ -1,3 +1,4 @@
+
 class Catalog {
   elements = {
     
@@ -196,6 +197,32 @@ class Catalog {
     this.elements.simple().click({ force: true });
     this.elements.category().click({ force: true });
     this.elements.simpleCategory().click({ force: true });
+    this.elements.measurement().click({ force: true });
+    this.elements.milliltr().click({ force: true });
+    this.elements.inPrice().type(inPrice, {force: true});
+    this.elements.outprice().type(outPrice, {force: true});
+    this.elements.openEnglishPage().click({force: true})
+    this.elements.engTitle().scrollIntoView().type(engName)
+    this.elements.engDesc().type(engDesc)
+    this.elements.openUzbPage().click({force: true})
+    this.elements.uzTitle().type(uzbName, {force: true})
+    this.elements.uzDesc().type(uzbDesc)
+    cy.wait(1000)
+
+    this.elements.saveProduct().click()
+  }
+
+
+  addGenProd(ruName, ruDesc, orderNum, inPrice, outPrice, engName, engDesc, uzbName, uzbDesc, typeName, categoryName) {
+    this.elements.add().click();
+    this.elements.ruTitle().type(ruName);
+    this.elements.ruDesc().type(ruDesc);
+    // this.elements.characteristics().click({force: true})
+    this.elements.orderNumber().type(orderNum);
+    this.elements.typeProduct().click()
+    this.elements.main().click()    
+    this.elements.category().click();
+    cy.contains(categoryName).click({force: true})
     this.elements.measurement().click({ force: true });
     this.elements.milliltr().click({ force: true });
     this.elements.inPrice().type(inPrice, {force: true});
