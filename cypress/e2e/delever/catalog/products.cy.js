@@ -116,8 +116,8 @@ describe("Catalog Product", () => {
       "овощи{enter}",
     )
   })
-  
-  // SMY35 General product 
+
+  // SMY35 General product ------------------------------- 
   it('Add General Product', () => {
     cy.wait(1000)
     GetAllProducts.addGenProd(
@@ -213,6 +213,6 @@ describe("Catalog Product", () => {
 
       )
   });
-  // -------------------------------------------------
+  // --------------------------------------------------------
 
 });
