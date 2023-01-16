@@ -81,12 +81,12 @@ class GetAllProducts {
 
     //edit button
     edit: () =>
-      cy.get(
-        ":nth-child(1) > :nth-child(10) > .flex > .ActionMenu > .MuiButtonBase-root > .MuiButton-label"
-      ),
+    cy.get('.ActionMenu > .MuiButtonBase-root'),
+
+      selectProd: () => cy.get('.MuiTableBody-root > .MuiTableRow-root > :nth-child(2)'),
 
     //redaktirovat
-    redactivate: () => cy.get('[tabindex="0"] > .ml-2'),
+    redactivate: () => cy.contains('Редактировать'),//cy.get('[tabindex="0"] > .ml-2'),
 
     titleRu: () => cy.get("#title_ru"),
     openEnglish: () =>
@@ -164,13 +164,15 @@ class GetAllProducts {
 
     openModificatorPage: () => cy.get('.m-4 > :nth-child(1) > .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > #full-width-tab-1'),
 
-    addModificButton: () => cy.get("button").contains("Добавить товары"),
-
+    addModificButton: () => cy.get("button").contains("Добавить товары"), //cy.get('#full-width-tabpanel-2 > .MuiBox-root > .MuiTypography-root > .rounded-lg > .p-4').find('button') ,
+    
     addMinAmount: () => cy.get('#min_amount'),
 
     addMaxAmount: () => cy.get('#max_amount'),
 
-    selectModifName: () => cy.get('.css-1hwfws3'),
+    selectModifName: () => cy.get('.css-1hwfws3').click(),
+    
+    selectIt: () => cy.contains('Russian Name'),
 
     modifName: () => cy.get('#react-select-25-option-1'),
 
@@ -190,7 +192,13 @@ class GetAllProducts {
 
     editModifButton: () => cy.get('.MuiList-root > [tabindex="0"]'),
 
+   modifierComboLinked: () => cy.get(':nth-child(1) > .MuiTabs-root > .MuiTabs-scroller > .MuiTabs-flexContainer > #full-width-tab-2'),
 
+   reduction: () => cy.get('.MuiList-root > [tabindex="0"]'),
+
+   editMinCount: () => cy.get('#min_amount'),
+
+   editMaxCount: () => cy.get('#max_amount'),
   };
 
   open() {
@@ -556,9 +564,64 @@ class GetAllProducts {
       this.elements.saveButton().click()
   }
 
+  addModifierToCombo(comboProductName, minAmount, maxAmount, modifName){
+    this.elements.search().click().type(comboProductName).type('{enter}')
+    cy.wait(2121)
+    this.elements.edit().click({ force: true }, {multiple: true});
+    cy.wait(1221)
+    this.elements.redactivate().click({force: true});
+    this.elements.linkedProdPage().click({ force: true });
+    cy.wait(3000);
+    this.elements.modifierComboLinked().click()
+    cy.wait(1221)
+    this.elements.addModificButton().click({force: true})
+    this.elements.addMinAmount().type(minAmount)
+    this.elements.addMaxAmount().type(maxAmount)
+    this.elements.selectModifName()//.type(modifName,'{enter}')
+    cy.wait(3000)
+    this.elements.selectIt().click()
+    this.elements.addButton().click({force :true})
+    this.elements.saveProd().click({multiple: true}, {force: true})
+    // this.elements.openModificatorPage().click({force: true})
+    // cy.wait(3000);
+    
+  }
 
-  
+  updateModificatorInCombo(comboProductName, minAmount, maxAmount){
+    this.elements.search().click().type(comboProductName).type('{enter}')
+    cy.wait(2121)
+    this.elements.edit().click({ force: true }, {multiple: true});
+    cy.wait(1221)
+    this.elements.redactivate().click({force: true});
+    this.elements.linkedProdPage().click({ force: true });
+    cy.wait(3000);
+    this.elements.modifierComboLinked().click()
+    cy.wait(1221)
+    this.elements.edit().click({ force: true }, {multiple: true});
+    cy.wait(1221)
+    this.elements.reduction().click()
+    this.elements.editMinCount().clear().type(minAmount)
+    this.elements.editMaxCount().clear().type(maxAmount)
+    this.elements.addButton().click({force :true})
+    this.elements.saveProd().click({multiple: true}, {force: true})
+  }
 
+  rmvModiffromCombo(comboProductName){
+    this.elements.search().click().type(comboProductName).type('{enter}')
+    cy.wait(2121)
+    this.elements.edit().click({ force: true }, {multiple: true});
+    cy.wait(1221)
+    this.elements.redactivate().click({force: true});
+    this.elements.linkedProdPage().click({ force: true });
+    cy.wait(3000);
+    this.elements.modifierComboLinked().click()
+    cy.wait(1221)
+    this.elements.edit().click({ force: true }, {multiple: true});
+    cy.wait(1221)
+    this.elements.deleteButton().click()
+    this.elements.confirmButton().click()
+    this.elements.saveButton().click()
+  }
 }
 
 module.exports = new GetAllProducts();

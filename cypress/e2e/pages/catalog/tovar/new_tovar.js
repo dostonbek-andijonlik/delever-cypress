@@ -156,7 +156,7 @@ class Catalog {
     //inPrice
     inPrice: () => cy.get("#in_price"),
 
-    //Out Price
+      //Out Price
     outprice: () => cy.get("#out_price"),
 
     //Characteristics

@@ -1,4 +1,3 @@
-
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
@@ -11,10 +10,10 @@ import GetAllProducts from "../../pages/catalog/tovar/get_tovar";
 
 import Catalog from "../../pages/catalog/tovar/new_tovar";
 
-
-const imagesPath = 'C:/Users/ASUS/cypress/cypress/e2e/delever-cypress/cypress/fixtures/pizza.jpg'
-const varImagePath = 'C:/Users/ASUS/cypress/cypress/e2e/delever-cypress/cypress/fixtures/food.jpg'
-
+const imagesPath =
+  "C:/Users/ASUS/cypress/cypress/e2e/delever-cypress/cypress/fixtures/pizza.jpg";
+const varImagePath =
+  "C:/Users/ASUS/cypress/cypress/e2e/delever-cypress/cypress/fixtures/food.jpg";
 
 describe("Catalog Product", () => {
   beforeEach(() => {
@@ -111,15 +110,13 @@ describe("Catalog Product", () => {
     );
   });
 
-  it.only("Add recommended product to the modificator", () => {
-    Catalog.addLinkedProductToModif(
-      "овощи{enter}",
-    )
-  })
+  it("Add recommended product to the modificator", () => {
+    Catalog.addLinkedProductToModif("овощи{enter}");
+  });
 
-  // SMY35 General product ------------------------------- 
-  it('Add General Product', () => {
-    cy.wait(1000)
+  // SMY35 General product -------------------------------
+  it("Add General Product", () => {
+    cy.wait(1000);
     GetAllProducts.addGenProd(
       "сайпресс",
       "сайпресс описание",
@@ -128,7 +125,7 @@ describe("Catalog Product", () => {
       "cypress uz",
       "cypress desc",
       true,
-      '1',
+      "1",
       "Главный",
       "Хотдог",
       "suzma",
@@ -141,11 +138,11 @@ describe("Catalog Product", () => {
       "123",
       "321",
       imagesPath
-    )
+    );
   });
 
-  it('Edit ', () => {
-    cy.wait(1000)
+  it("Edit ", () => {
+    cy.wait(1000);
     GetAllProducts.ediGenProd(
       "сайпресс",
       "сайпресс редак",
@@ -155,64 +152,60 @@ describe("Catalog Product", () => {
       "cypress uz edit",
       "cypress desc",
       true,
-      '5',
+      "5",
       "33",
       "336",
       "123",
       "321",
       imagesPath
-    )
+    );
   });
 
-  
-  it('Delete', () => {
-    cy.wait(1000)
-    GetAllProducts.deleteGenProd("сайпресс")
+  it("Delete", () => {
+    cy.wait(1000);
+    GetAllProducts.deleteGenProd("сайпресс");
   });
 
-  it('Link Products', () => {
-    cy.wait(2000)
-    GetAllProducts.linkProducts(
-      "сайпресс",
-      "prostoy"
-    )
+  it("Link Products", () => {
+    cy.wait(2000);
+    GetAllProducts.linkProducts("сайпресс", "prostoy");
   });
 
-  it('Delete Link Products', () => {
-    cy.wait(2000)
-    GetAllProducts.deleteLinkedProduct(
-      "сайпресс",
-      "prostoy"
-    )
+  it("Delete Link Products", () => {
+    cy.wait(2000);
+    GetAllProducts.deleteLinkedProduct("сайпресс", "prostoy");
   });
 
-  it('Add variation', () => {
-    cy.wait(1000)
+  it("Add variation", () => {
+    cy.wait(1000);
     GetAllProducts.addVariation(
       "сайпресс",
       "balmaz",
       "123",
       "12345",
       varImagePath
-    )
+    );
   });
 
-  it('Link product to Variation', () => {
-    cy.wait(1000)
-    GetAllProducts.linkProductToVariation(
-      "сайпресс",
-      "pizza iiko"
-    )
+  it("Link product to Variation", () => {
+    cy.wait(1000);
+    GetAllProducts.linkProductToVariation("сайпресс", "pizza iiko");
   });
 
-  it('Delete Variation', () => {
-      cy.wait(1000)
-      GetAllProducts.deleteVariation(
-        "сайпресс",
-        "сайпресс balmaz"
-
-      )
+  it("Delete Variation", () => {
+    cy.wait(1000);
+    GetAllProducts.deleteVariation("сайпресс", "сайпресс balmaz");
   });
-  // --------------------------------------------------------
 
+  it("Add modificator to combo", () => {
+    GetAllProducts.addModifierToCombo("КомбоСай", 1, 3);
+  });
+
+  it("Update modifier in combo", () => {
+    GetAllProducts.updateModificatorInCombo("КомбоСай", 1, 5);
+  });
+
+  it("Delete modifier from combo", () => {
+    GetAllProducts.rmvModiffromCombo('КомбоСай',)
+  })
 });
