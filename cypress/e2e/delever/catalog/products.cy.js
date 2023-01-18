@@ -111,7 +111,7 @@ describe("Catalog Product", () => {
     );
   });
 
-  it.only("Add recommended product to the modificator", () => {
+  it("Add recommended product to the modificator", () => {
     Catalog.addLinkedProductToModif(
       "овощи{enter}",
     )

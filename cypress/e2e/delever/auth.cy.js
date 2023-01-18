@@ -2,14 +2,14 @@
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
-import loginPage from "../delever-js/login";
+import loginPage from "../pages/login/login";
 
 describe("empty spec", () => {
   beforeEach(() => {
     cy.visit("https://test.admin.delever.uz/#/home/dashboard");
   });
 
-  it("passes", () => {
+  it("Logging in", () => {
     loginPage.login();
   });
 });

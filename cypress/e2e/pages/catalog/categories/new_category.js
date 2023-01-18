@@ -13,6 +13,8 @@ class NewCategory{
     reductirovate: () => cy.get('[tabindex="0"] > .ml-2'),
     addPhoto: () => cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid > .col-span-3 > .h-full > .Gallery > .add-block'),
 
+    categoryList: () => cy.get('.css-11unzgr'),
+
      // ru title
      ruTitle: () => cy.get("#title_ru"),
 
@@ -49,6 +51,7 @@ class NewCategory{
 
   addCategory(ruName, enName, uzName, number){
     this.elements.categoryOpenPage().click()
+    cy.wait(2000)
     this.elements.addButton().click()
     this.elements.ruTitle().type(ruName, {force: true})
     this.elements.enTitle().type(enName, {force: true})
@@ -73,9 +76,11 @@ class NewCategory{
     imagePath
   ){
     this.elements.categoryOpenPage().click()
+    cy.wait(2000)
     this.elements.addButton().click()
-    this.elements.categorySelect().find('input').click({force: true})
-    cy.contains(parentCategory).click()
+    this.elements.categorySelect().find('input').click({force: true}).type(parentCategory).click()
+    cy.wait(5000)
+    this.elements.categoryList().contains(parentCategory).click()
     this.elements.addPhoto().find('input').selectFile(imagePath, {force: true})
     this.elements.ruTitle().type(ruName, {force: true})
     this.elements.ruDesc().type(rudesc)
@@ -87,7 +92,11 @@ class NewCategory{
     this.elements.orderNum().find('input').type(number)
     this.elements.statusButton().find('button').click()
     this.elements.saveButton().click()
+    cy.wait(2000)
     this.elements.categoryOpenPage().click()
+    cy.wait(2000)    
+    this.elements.searchForCategory().click().type(parentCategory)
+    cy.wait(1000)
     this.elements.tableBody().contains(parentCategory).click()
     cy.contains(ruName) 
     
@@ -107,8 +116,9 @@ class NewCategory{
     categoryName
   ){
     this.elements.categoryOpenPage().click()
+    cy.wait(2000)
     this.elements.searchForCategory().click().type(categoryName)
-    cy.wait(1000)
+    cy.wait(2000)
     this.elements.actions().click({force:true})
     this.elements.reductirovate().click()
     this.elements.categorySelect().find('input').click({force: true})
@@ -123,6 +133,7 @@ class NewCategory{
     this.elements.orderNum().find('input').clear().type(newNumber)
     this.elements.statusButton().find('button').click({force: true}, {multiple: true})
     this.elements.saveButton().click()
+    cy.wait(2000)
     this.elements.tableBody().contains(newParentCategory).click()
     cy.contains(newRuName)
     
@@ -133,14 +144,16 @@ class NewCategory{
     categoryName
   ){
     this.elements.categoryOpenPage().click()
-    cy.wait(1000)
+    cy.wait(2000)
     this.elements.searchForCategory().type(categoryName)
     cy.wait(2000)
     this.elements.actions().click()
     this.elements.deleteCategory().click()
-    cy.wait(1000)
+    cy.wait(2000)
     cy.get(':nth-child(2) > .button').click()
+    cy.wait(2000)
     this.elements.searchForCategory().click().clear().type(categoryName).type('{enter}')
+    cy.wait(2000)
     this.elements.tableBody().should('not.have.value', categoryName)
     
   }

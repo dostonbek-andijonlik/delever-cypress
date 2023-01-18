@@ -27,7 +27,7 @@ describe("Marketing Popup", () => {
     Popups.itemLimit();
   });
 
-  it.only("Update popup", () => {
+  it("Update popup", () => {
     loginPage.login();
     SideBar.marketing();
     Popups.openPage();

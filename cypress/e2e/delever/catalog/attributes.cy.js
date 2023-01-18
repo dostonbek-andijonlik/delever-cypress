@@ -39,7 +39,7 @@ describe("Catalog Attributes", () => {
     Attributes.deleteAttrib();
   });
 
-  it.only("Add attribute", () => {
+  it("Add attribute", () => {
     loginPage.login();
     SideBar.catalog();
     Attributes.addmenu("VIP Menu");
