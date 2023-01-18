@@ -22,12 +22,12 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   
   
   
-    it.only('Change Limit', () => {
+    it('Change Limit', () => {
       cy.wait(2000)
         Promotions.changeitemsLimit(30)
     });
   
-    it.only('Create Promotion', () => {
+    it('Create Promotion', () => {
         cy.wait(1000)
         Promotions.addPromotion(
           "сайпрес",
@@ -40,12 +40,12 @@ Cypress.on("uncaught:exception", (err, runnable) => {
         )
     });
   
-    it.only('Search Promotion', () => {
+    it('Search Promotion', () => {
       cy.wait(1000)
       Promotions.searchPromotion("сайпрес")
     });
   
-    it.only('Edit promotion', () => {
+    it('Edit promotion', () => {
         cy.wait(2000)
         Promotions.editPromotion(
           "сайпрес редак",
@@ -57,7 +57,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
         )
     });
   
-    it.only('Delete Promotion', () => {
+    it('Delete Promotion', () => {
         cy.wait(2000)
         Promotions.deletePromotion("сайпрес")
     });

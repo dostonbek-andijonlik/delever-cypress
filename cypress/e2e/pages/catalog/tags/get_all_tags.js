@@ -21,7 +21,7 @@ class Menu {
     pageNumber: () => cy.get(':nth-child(2) > .MuiButtonBase-root'),
 
     editTag: () => cy.get('#simple-menu > .MuiPaper-root > .MuiList-root > [tabindex="0"]'),
-
+    colorSelectMenuList: () => cy.get(".select__menu-list"),
 
     deleteButton: () => cy.get('[tabindex="-1"] > .ml-2'),
   }
@@ -31,6 +31,7 @@ class Menu {
   ){
     cy.wait(1000)
     this.elements.search().click().type(tag_name).type('{enter}')
+    cy.wait(3000)
     this.elements.tableBody().should('contain', tag_name)
   }
 
@@ -46,7 +47,8 @@ class Menu {
     this.elements.ruTitle().click().type(ruName).type('{enter}')
     
     this.elements.chooseColor().click()
-    cy.contains(color).click({force:true})
+    cy.wait(1000)
+    this.elements.colorSelectMenuList().contains(color).click({force:true})
     cy.wait(500)
     this.elements.uzField().click({force:true})
     this.elements.uzTitle().click({force:true}).type(uzName)
@@ -55,6 +57,8 @@ class Menu {
     this.elements.enTitle().click({force:true}).type(enName)
     // cy.wait(1000) 
     this.elements.saveButton().click()
+    cy.wait(3000)
+    this.searchTag(ruName)
     
     // this.elements.tagsOpenPage().click() }
   }
@@ -67,21 +71,24 @@ class Menu {
     newColor,
   ){
     this.elements.search().click().type(tag_name).type('{enter}')
-    cy.wait(1000)
+    cy.wait(3000)
     this.elements.actions().click()
     this.elements.editTag().click()  
-
+    cy.wait(2000)
     this.elements.ruTitle().click().clear().type(ruNewName)
     
     this.elements.chooseColor().click()
-    cy.contains(newColor).click({force:true})
+    cy.wait(1000)
+    this.elements.colorSelectMenuList().contains(newColor).click({force:true})
     cy.wait(500)
     this.elements.uzField().click({force:true})
     this.elements.uzTitle().click({force:true}).clear().type(uzNewName)
     cy.wait(500)
     this.elements.enField().click({force:true})
     this.elements.enTitle().click({force:true}).clear().type(enNewName)
-    this.elements.saveButton().click()  
+    this.elements.saveButton().click() 
+    cy.wait(3000)
+    this.searchTag(ruNewName) 
 
   }
 
@@ -94,6 +101,7 @@ class Menu {
     this.elements.actions().click()
     this.elements.deleteButton().click()
     cy.contains('Да').click()
+    cy.wait(3000)
     this.elements.tableBody().should('not.have.value', tag_name)
     this.elements.search().click().clear()
   }

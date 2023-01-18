@@ -19,14 +19,14 @@ beforeEach(() => {
     Tag.elements.tagsOpenPage().click()
 });
 
-it.only('Search Tag', () => {
+it('Search Tag', () => {
     cy.wait(1000)
     Tag.searchTag(
     'Топ продаж'
     )
 });
 
-it.only('Create Tag', () => {
+it('Create Tag', () => {
     cy.wait(1000)
     Tag.createTag(
     "Cypress",
@@ -36,19 +36,19 @@ it.only('Create Tag', () => {
     )
 });
 
-it.only('Edit Tag', () => {
+it('Edit Tag', () => {
     cy.wait(1000)
     Tag.editTag(
     "Cypress",
     "Cypress Edited",
     "Сайпрес Редак",
     "Cypress Edited",
-    'Желтый'      
+    'Красный'      
     )
 });
 
 
-it.only('Delete Tag', () => {
+it('Delete Tag', () => {
     cy.wait(1000)
     Tag.deleteTag("Сайпрес Редак")
 });

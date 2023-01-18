@@ -17,22 +17,13 @@ const imagesPath = 'C:/Users/ASUS/cypress/cypress/e2e/delever-cypress/cypress/fi
 
 describe("Catalog categories", () => {
   beforeEach(() => {
-    cy.visit("https://test.admin.delever.uz/#/home/dashboard");
+    cy.visit("https://test.admin.delever.uz");
     loginPage.login();
     SideBar.catalog();
   });
 
   it("open category page", () => {
     Category.openPage();
-  });
-
-  it("Update category", () => {
-    Category.editCategory(
-      "Rus Name",
-      "English Name",
-      "Uz Name",
-      "Kombo"
-      );
   });
 
   it("Add Category", () => {
@@ -42,17 +33,24 @@ describe("Catalog categories", () => {
       "Uzbek Name",
       3
     );
+  });  
+
+  it("Update category", () => {
+    Category.editCategory(
+      "Rus Name",
+      "Rus Name Edited",
+      "English Name Edited",
+      "Uz Name Edited",
+      "Kombo"
+      );
   });
 
-  it("Delete Category", () => {
-    Category.deleteCategory();
-  });
 
   it("Next Page", ()=>{
     Category.nextPage()
   })
 
-  it.only('Add Subcategory', () => {
+  it('Add Subcategory', () => {
     cy.wait(1000)
     NewCategory.addSubcategory(
       "Субкат Ру",
@@ -62,12 +60,12 @@ describe("Catalog categories", () => {
       "En Subcat",
       "En Desc ",
       "2",
-      "Сэндвич",
+      "Rus Name Edited",
       imagesPath     
     )
   });
 
-  it.only('Edit Category', () => {
+  it('Edit SubCategory', () => {
     cy.wait(1000)
     NewCategory.editSubcategory(
       "Редак Субкат Ру",
@@ -83,11 +81,17 @@ describe("Catalog categories", () => {
     )
   });
   
-  it.only('Delete Subcategory', () => {
+  it('Delete Subcategory', () => {
     cy.wait(1000)
     NewCategory.deleteSubcategory(
       "Редак Субкат Ру"
     )
     
+  });
+
+  
+  it("Delete Category", () => {
+    cy.wait(2000)
+    Category.deleteCategory("Rus Name Edited");
   });
 });
