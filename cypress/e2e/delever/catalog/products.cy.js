@@ -112,10 +112,8 @@ describe("Catalog Product", () => {
   });
 
   it("Add recommended product to the modificator", () => {
-    Catalog.addLinkedProductToModif(
-      "овощи{enter}",
-    )
-  })
+    Catalog.addLinkedProductToModif("овощи{enter}");
+  });
 
   // SMY35 General product ------------------------------- 
   it('Add General Product', () => {
