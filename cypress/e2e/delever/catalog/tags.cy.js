@@ -43,7 +43,7 @@ it('Edit Tag', () => {
     "Cypress Edited",
     "Сайпрес Редак",
     "Cypress Edited",
-    'Желтый'      
+    'Красный'      
     )
 });
 

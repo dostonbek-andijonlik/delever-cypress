@@ -1,7 +1,7 @@
 class SideBars {
   elements = {
     //personal
-    personalOpenPage: () => cy.get(".is-active-sidebar > .active-sidebar"),
+    personnelPage: () => cy.get(':nth-child(4) > a.flex > .active-sidebar'),
 
     //Orders
     ordersPage: () =>

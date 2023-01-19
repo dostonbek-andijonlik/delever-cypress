@@ -6,18 +6,15 @@ import Operators  from "../../pages/Personnel/operators.js";
 import loginPage from "../../pages/login/login.js"
 import SideBars from "../../pages/sidebar.js"
   
-context('Operators', () => {
-    it('Login', () => {
+describe('Operators', () => {
+    beforeEach(() => {
         cy.visit('https://test.admin.delever.uz')
         loginPage.login()            
         SideBars.elements.personnelPage().click()
     });
 
 
-    it('Open Operators', () => {
-        Operators.searchItem('test')
-        
-    });
+
 
 
     it('Change page items limit', () => {
@@ -33,6 +30,11 @@ context('Operators', () => {
             "123tester321",
             "кассир"          
         )
+    });
+
+    it('Search Operators', () => {
+        Operators.searchItem('TestCypress')
+        
     });
 
 

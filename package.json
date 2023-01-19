@@ -1,9 +1,27 @@
 {
   "dependencies": {
-    "cypress": "^12.2.0",
+    "cypress": "^12.3.0",
     "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
     "cypress-xpath": "^2.0.1"
-  }
+  },
+  "name": "delever-cypress",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dostonbek-andijonlik/delever-cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dostonbek-andijonlik/delever-cypress/issues"
+  },
+  "homepage": "https://github.com/dostonbek-andijonlik/delever-cypress#readme",
+  "description": ""
 }

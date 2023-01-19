@@ -2,7 +2,7 @@
 
 class Operators{
     elements = {
-        searchOperator: () => cy.get('.focus-within\\:ring-2 > .bg-white > .flex'),
+        searchOperator: () => cy.get('.focus-within\\:ring-2 > .bg-white > .flex > .flex-1'),
         addOperator: () => cy.get('.items-center > .fill-current > .MuiSvgIcon-root'),
         itemsLimit: () => cy.get('.ml-2'),
         nextPage: () => cy.get(':nth-child(5) > .MuiButtonBase-root'),
@@ -15,6 +15,9 @@ class Operators{
         itemsLimitThirty: () => cy.get('.MuiPaper-root > :nth-child(2)'),
         tableBody: () => cy.get('.MuiTableBody-root'),
         // for new order page 
+        
+        rolesList: () => cy.get('.select__menu-list'),
+        
         fullNameField: () => cy.get(':nth-child(2) > .alisa-input > .focus-within\\:ring-2 > .bg-white > .flex > .flex-1'),
         phoneNumberField: () => cy.get('#phone'),
         loginField: () => cy.get(':nth-child(6) > .alisa-input > .focus-within\\:ring-2 > .bg-white > .flex > .flex-1'),
@@ -27,13 +30,15 @@ class Operators{
     
     searchItem(operatorName){
         this.elements.searchOperator().type(operatorName)
-        this.elements.firstTableItem().should('contain', operatorName)
-        this.elements.searchOperator().clear()
+        cy.wait(1000)
+        this.elements.tableBody().should('contain', operatorName)
+        this.elements.searchOperator().click().clear()
     };
 
     changeitemsLimit(){
         this.elements.itemsLimit().click()
         this.elements.itemsLimitThirty().click()
+        cy.wait(1000)
         this.elements.tableBody().its('length').should('be.lte', 30)
         
     }
@@ -51,8 +56,9 @@ class Operators{
         this.elements.loginField().click().type(login)
         this.elements.passwordField().click().type(password)
         this.elements.chooseRole().click()
-        cy.contains(roleName).click()
+        this.elements.rolesList().contains(roleName).click()
         this.elements.saveButton().click()
+        cy.wait(2000)
         this.elements.tableBody().should('contain', operatorName)
     }
 
@@ -61,6 +67,7 @@ class Operators{
         this.elements.actions().click()
         this.elements.actionsDelete().click()
         cy.contains("Да").click()
+        cy.wait(2000)
         this.elements.tableBody().should('not.have.value', operatorName)
     }
 
