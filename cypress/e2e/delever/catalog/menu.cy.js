@@ -33,7 +33,7 @@ describe("Catalog categories", () => {
       );
   });
 
-  it.only("Delete menu", () => {
+  it("Delete menu", () => {
     loginPage.login();
     SideBar.catalog();
     Menu.deleteMenu(

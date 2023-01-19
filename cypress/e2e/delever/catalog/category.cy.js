@@ -52,7 +52,7 @@ describe("Catalog categories", () => {
     Category.nextPage()
   })
 
-  it.only('Add Subcategory', () => {
+  it('Add Subcategory', () => {
     cy.wait(1000)
     NewCategory.addSubcategory(
       "Субкат Ру",
@@ -67,7 +67,7 @@ describe("Catalog categories", () => {
     )
   });
 
-  it.only('Edit Category', () => {
+  it('Edit Category', () => {
     cy.wait(1000)
     NewCategory.editSubcategory(
       "Редак Субкат Ру",
@@ -83,7 +83,7 @@ describe("Catalog categories", () => {
     )
   });
   
-  it.only('Delete Subcategory', () => {
+  it('Delete Subcategory', () => {
     cy.wait(1000)
     NewCategory.deleteSubcategory(
       "Редак Субкат Ру"

@@ -19,6 +19,9 @@ class SideBars {
     //Marketing
     marketingPage: () => cy.get(":nth-child(6) > a.flex > .active-sidebar"),
   };
+  orders(){
+    this.elements.ordersPage().click();
+  }
 
   clients() {
     this.elements.clientsPage().click();

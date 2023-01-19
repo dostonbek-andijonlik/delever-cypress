@@ -9,7 +9,7 @@ import SideBars from "../../pages/sidebar.js"
 
 
 describe('Couriers', () => {
-    it.only('Login', () => {
+    it('Login', () => {
       cy.visit('https://test.admin.delever.uz')
       loginPage.login()            
       SideBars.elements.personnelPage().click()
@@ -31,7 +31,7 @@ describe('Couriers', () => {
     });
   
   
-    it.only('Adding courier', () => { 
+    it('Adding courier', () => { 
         cy.wait(1000)     
         Couriers.addCourier(
           "Test",
@@ -45,7 +45,7 @@ describe('Couriers', () => {
     });
   
   
-    it.only('Edit Courier', () => {
+    it('Edit Courier', () => {
         Couriers.editCourier(
           "Test",
           "Cypress Edited",
@@ -55,7 +55,7 @@ describe('Couriers', () => {
     });
   
   
-    it.only('Delete Courier', () => {
+    it('Delete Courier', () => {
         Couriers.deleteCourier("Test Cypress")
     });
   });

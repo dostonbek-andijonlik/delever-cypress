@@ -34,7 +34,7 @@ Cypress.on("uncaught:exception", (err, runnable) => {
       TelegramPost.selectContentType("Gif")
     });
   
-    it.only('Add Post', () => {
+    it('Add Post', () => {
         cy.wait(1000)
         TelegramPost.addPost(
           "hello from cypress",

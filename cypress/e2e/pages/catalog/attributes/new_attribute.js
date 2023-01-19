@@ -1,4 +1,4 @@
-class NewAttributes {
+  class NewAttributes {
   elements = {
     addButton: () => cy.contains("+ Добавит"),
 

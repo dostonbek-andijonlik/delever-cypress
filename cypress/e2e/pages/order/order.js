@@ -84,6 +84,10 @@ class Order {
     //Save order
     saveorder: () => cy.get(":nth-child(2) > .button"),
   };
+
+  openPage(){
+    this.elements.ordersPage()
+  }
 }
 
 module.exports = new Order();

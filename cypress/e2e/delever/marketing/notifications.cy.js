@@ -27,7 +27,7 @@ describe("Marketing Banner", () => {
     Notifications.itemLimit();
   });
 
-  it.only("Add notification", () => {
+  it("Add notification", () => {
     loginPage.login();
     SideBar.marketing();
     Notifications.notif();
