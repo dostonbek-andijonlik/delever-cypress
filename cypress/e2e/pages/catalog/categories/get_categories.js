@@ -10,7 +10,7 @@ class Category {
 
     editCategory: () => cy.get('.MuiTableBody-root > :nth-child(1) > :nth-child(4)'),
 
-    reductirovate: () => cy.get('[tabindex="0"] > .ml-2'),
+    edit: () => cy.get('[tabindex="0"] > .ml-2'),
 
     titleRu: () => cy.get('#title_ru'),
     titleEng: () => cy.get('#title_en'),
@@ -43,7 +43,8 @@ class Category {
     this.elements.searchForCategory().type(categoryName)
     cy.wait(2000)
     this.elements.editCategory().click()
-    this.elements.reductirovate().click({multiple: true})
+    cy.wait(2000)
+    this.elements.edit().click()
     this.elements.titleRu().clear().type(ruName)
     this.elements.openEngTitle().click()
     this.elements.titleEng().clear().type(engName)
@@ -64,7 +65,7 @@ class Category {
     this.elements.editCategory().click()
     this.elements.deleteCategory().click()
     this.elements.confirmButton().click({force: true  })
-    cy.wait(1000)
+    cy.wait(2000)
   }
 
   nextPage(){

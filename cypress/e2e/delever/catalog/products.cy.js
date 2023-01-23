@@ -6,9 +6,9 @@ import loginPage from "../../pages/login/login";
 
 import SideBar from "../../pages/sidebar";
 
-import GetAllProducts from "../../pages/catalog/tovar/get_tovar";
+import GetAllProducts from "../../pages/catalog/products/get_tovar";
 
-import Catalog from "../../pages/catalog/tovar/new_tovar";
+import Catalog from "../../pages/catalog/products/new_tovar";
 
 const imagesPath =
   "C:/Users/ASUS/cypress/cypress/e2e/delever-cypress/cypress/fixtures/pizza.jpg";
@@ -115,7 +115,7 @@ describe("Catalog Product", () => {
   });
 
   // SMY35 General product -------------------------------
-  it("Add General Product", () => {
+  it.only("Add General Product", () => {
     cy.wait(1000);
     GetAllProducts.addGenProd(
       "сайпресс",
@@ -141,9 +141,9 @@ describe("Catalog Product", () => {
     );
   });
 
-  it("Edit ", () => {
+  it("Edit General Product", () => {
     cy.wait(1000);
-    GetAllProducts.ediGenProd(
+    GetAllProducts.editGenProd(
       "сайпресс",
       "сайпресс редак",
       "сайпресс редак описание",

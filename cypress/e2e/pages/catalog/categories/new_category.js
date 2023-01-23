@@ -53,12 +53,18 @@ class NewCategory{
     this.elements.categoryOpenPage().click()
     cy.wait(2000)
     this.elements.addButton().click()
+    cy.wait(2000)
     this.elements.ruTitle().type(ruName, {force: true})
+    cy.wait(2000)
     this.elements.enTitle().type(enName, {force: true})
+    cy.wait(2000)
     this.elements.uzTitle().type(uzName, {force: true})
+    cy.wait(2000)
     this.elements.orderNum().find('input').type(number)
     this.elements.statusButton().find('button').click({force: true})
+    cy.wait(2000)
     this.elements.saveButton().click()
+    cy.wait(3000)
   }
 
 
@@ -112,7 +118,7 @@ class NewCategory{
     newUzName,
     newUzDesc,
     newNumber,
-    newParentCategory,
+    parentCategoryName,
     categoryName
   ){
     this.elements.categoryOpenPage().click()
@@ -121,8 +127,6 @@ class NewCategory{
     cy.wait(2000)
     this.elements.actions().click({force:true})
     this.elements.reductirovate().click()
-    this.elements.categorySelect().find('input').click({force: true})
-    cy.contains(newParentCategory).click({force:true})
     this.elements.ruTitle().clear().type(newRuName, {force: true})
     this.elements.ruDesc().clear().type(newRuDesc)
     this.elements.enTitle().type(newEnName, {force: true})
@@ -134,7 +138,7 @@ class NewCategory{
     this.elements.statusButton().find('button').click({force: true}, {multiple: true})
     this.elements.saveButton().click()
     cy.wait(2000)
-    this.elements.tableBody().contains(newParentCategory).click()
+    this.elements.tableBody().contains(parentCategoryName).click()
     cy.contains(newRuName)
     
   }
