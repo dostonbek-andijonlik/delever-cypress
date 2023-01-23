@@ -19,10 +19,11 @@ describe("Catalog categories", () => {
   beforeEach(() => {
     cy.visit("https://test.admin.delever.uz");
     loginPage.login();
+    cy.viewport(1900, 700)
     SideBar.catalog();
   });
 
-  it("open category page", () => {
+  it("Open category page", () => {
     Category.openPage();
   });
 
@@ -35,20 +36,16 @@ describe("Catalog categories", () => {
     );
   });  
 
-  it("Update category", () => {
+  it("Edit category", () => {
     Category.editCategory(
       "Rus Name",
       "Rus Name Edited",
       "English Name Edited",
-      "Uz Name Edited",
-      "Kombo"
+      "Uz Name Edited"
       );
   });
 
 
-  it("Next Page", ()=>{
-    Category.nextPage()
-  })
 
   it('Add Subcategory', () => {
     cy.wait(1000)
@@ -76,7 +73,7 @@ describe("Catalog categories", () => {
       "Edited En Subcat",
       "Edited En Desc ",
       "2",
-      "Хотдог",
+      "Rus Name Edited",
       "Субкат Ру"
 
     )

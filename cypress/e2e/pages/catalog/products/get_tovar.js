@@ -103,11 +103,8 @@ class GetAllProducts {
     simpleType: () => cy.contains("Простой"),
 
     category: () =>
-      cy.get(
-        "#full-width-tabpanel-2 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(1) > :nth-child(1) > #category_ids > .css-8pw2m5-control > .css-19ppke0"
-      ),
+    cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > .col-span-12 > .grid > :nth-child(1) > :nth-child(1) > #category_ids > .css-8pw2m5-control > .css-19ppke0'),
 
-    categoryType: () => cy.contains("простой товар"),
 
     deleteType: () =>
       cy.get(
@@ -409,11 +406,10 @@ class GetAllProducts {
       imagePath
   ){
       this.elements.addGenButton().click()
-      cy.wait(1000)
+      cy.wait(3000)
 
       // this.elements.characteristics()
 
-      cy.wait(1000)
 
       this.elements.ruTitle().click().type(ruName)
       this.elements.ruDescription().click().type(ruDesc)
@@ -425,35 +421,27 @@ class GetAllProducts {
       this.elements.uzTitle().click().type(uzName)
       this.elements.uzDescription().click().type(uzDesc)
 
-          // if(status){
-          //     this.elements.statusButton().find('button').click()
-          // }
-      cy.wait(1000)
+      cy.wait(2000)
       this.elements.ruField().click()
       this.elements.sequenceNumber().click().type(seqNumber)
-      // this.elements.artikulGenButton().click()
-      cy.wait(1000)
-      //this.elements.productType().click()
+      cy.wait(2000)
       cy.get('#full-width-tabpanel-0 > .MuiBox-root > .MuiTypography-root > .grid-cols-12 > :nth-child(1) > :nth-child(6) > .text-body > #type > .select__control > .select__value-container').click()
       this.elements.selectMenuList().contains(typeName).click()
 
 
-      cy.wait(1000)
-      this.elements.categoryType().click({force:true})
-      cy.wait(1000)
-      cy.contains(categoryName).click()
-      this.elements.brand().click()
-      cy.wait(1000)
-      cy.contains(brand).click()
+      cy.wait(2000)
+      this.elements.category().click()
+      cy.contains(categoryName).click({force:true})
+      cy.wait(2000)
 
       this.elements.isDivisible().click()
-      cy.wait(1000)
+      cy.wait(2000)
       cy.contains(isDiv).click()
       this.elements.tagField().click()
-      cy.wait(1000)
+      cy.wait(2000)
       cy.contains(tag).click()
       this.elements.measurementUnit().click()
-      cy.wait(1000)
+      cy.wait(2000)
       cy.contains(measurUnit).click()
       this.elements.IKPU().click().type(ikpu)
       this.elements.codePack().click().type(packCode)
@@ -464,12 +452,12 @@ class GetAllProducts {
       cy.wait(4000)
       cy.contains('salad').click()
       this.elements.createButton().click()
-      cy.wait(1000)
+      cy.wait(2000)
       this.elements.productsTable().should('contain', ruName)
 
   }
 
-  ediGenProd(
+  editGenProd(
       productToEdit,
       ruName,
       ruDesc,
@@ -564,6 +552,7 @@ class GetAllProducts {
       this.elements.saveButton().click()
   }
 
+  //---------------------------------------------------------
   addModifierToCombo(comboProductName, minAmount, maxAmount, modifName){
     this.elements.search().click().type(comboProductName).type('{enter}')
     cy.wait(2121)
@@ -622,6 +611,6 @@ class GetAllProducts {
     this.elements.confirmButton().click()
     this.elements.saveButton().click()
   }
-}
+  }
 
 module.exports = new GetAllProducts();
